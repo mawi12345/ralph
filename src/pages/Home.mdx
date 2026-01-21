@@ -12,6 +12,7 @@ MDX allows you to use JSX in your markdown content. You can import components, w
 - Embed React components
 - Style with custom components
 - Deploy to GitHub Pages
+- Render mathematical equations with MathJax
 
 ## Example Component
 
@@ -45,6 +46,62 @@ function greet(name) {
 
 console.log(greet('MDX'));
 ```
+
+## Mathematical Equations
+
+MDX with MathJax supports both inline and display mathematics!
+
+### Inline Math
+
+You can write inline equations like $E = mc^2$ or $\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}$ right in your text.
+
+### Display Math
+
+For larger equations, use display mode:
+
+$$
+\frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u
+$$
+
+### More Examples
+
+The quadratic formula:
+
+$$
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+Euler's identity (often called the most beautiful equation):
+
+$$
+e^{i\pi} + 1 = 0
+$$
+
+The Pythagorean theorem: $a^2 + b^2 = c^2$
+
+Matrix notation:
+
+$$
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+ax + by \\
+cx + dy
+\end{bmatrix}
+$$
+
+Summation and limits:
+
+$$
+\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+$$
 
 ## Next Steps
 
