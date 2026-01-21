@@ -1,0 +1,58 @@
+# Welcome to Ralph
+
+This is a minimal **MDX** project running on GitHub Pages!
+
+## What is MDX?
+
+MDX allows you to use JSX in your markdown content. You can import components, write markdown, and use React components seamlessly.
+
+### Features
+
+- Write markdown naturally
+- Embed React components
+- Style with custom components
+- Deploy to GitHub Pages
+
+## Example Component
+
+export const Button = ({ children }) => (
+  <button style={{
+    padding: '10px 20px',
+    backgroundColor: '#0066cc',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    margin: '10px 0'
+  }}>
+    {children}
+  </button>
+)
+
+Here's a custom button component defined in MDX:
+
+<Button>Click Me!</Button>
+
+## Code Example
+
+Here's some inline `code` and a code block:
+
+```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('MDX'));
+```
+
+## Next Steps
+
+1. Edit `src/pages/Home.mdx` to customize this page
+2. Add more `.mdx` files in the `src/pages` directory
+3. Create reusable components in `src/components`
+4. Push to GitHub and your site will be deployed automatically
+
+---
+
+Built with ❤️ using React and MDX
