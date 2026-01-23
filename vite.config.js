@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import mdx from '@mdx-js/rollup'
 import remarkMath from 'remark-math'
 import rehypeMathjax from 'rehype-mathjax'
@@ -16,7 +17,8 @@ export default defineConfig({
         providerImportSource: "@mdx-js/react"
       })
     },
-    react()
+    react(),
+    tailwindcss()
   ],
   build: {
     outDir: 'dist'

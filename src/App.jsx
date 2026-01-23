@@ -21,9 +21,8 @@ function getRouteFromPath(pathname, basePath = '/ralph/') {
 }
 
 const components = {
-  h1: (props) => <h1 style={{ color: '#2c3e50' }} {...props} />,
-  h2: (props) => <h2 style={{ color: '#34495e' }} {...props} />,
-  p: (props) => <p style={{ marginBottom: '1rem' }} {...props} />,
+  h1: (props) => <h1 className="text-slate-800" {...props} />,
+  h2: (props) => <h2 className="text-slate-700" {...props} />,
 }
 
 function App({ serverUrl }) {
@@ -69,16 +68,7 @@ function App({ serverUrl }) {
     NavigateButton: ({ to, children }) => (
       <button
         onClick={() => navigate(to)}
-        style={{
-          padding: '10px 20px',
-          backgroundColor: '#0066cc',
-          color: 'white',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          fontSize: '16px',
-          margin: '10px 5px',
-        }}
+        className="px-5 py-2.5 bg-blue-600 text-white rounded cursor-pointer my-2.5 mx-1"
       >
         {children}
       </button>
@@ -100,7 +90,7 @@ function App({ serverUrl }) {
   return (
     <MDXProvider components={mdxComponents}>
       <div className="App">
-        <nav style={{ padding: '10px', borderBottom: '1px solid #ddd', marginBottom: '20px' }}>
+        <nav className="p-2.5 border-b border-gray-300 mb-5">
           {routes.map(route => {
             const href = `/ralph${route.path === '/' ? '/' : route.path + '/'}`
             const isActive = currentRoute.name === route.name
@@ -110,17 +100,9 @@ function App({ serverUrl }) {
                 key={route.name}
                 href={href}
                 onClick={(e) => handleLinkClick(e, route.name)}
-                style={{
-                  display: 'inline-block',
-                  padding: '8px 16px',
-                  marginRight: '10px',
-                  backgroundColor: isActive ? '#0066cc' : '#f0f0f0',
-                  color: isActive ? 'white' : '#333',
-                  border: '1px solid #ddd',
-                  borderRadius: '4px',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                }}
+                className={`inline-block px-4 py-2 mr-2.5 border border-gray-300 rounded no-underline cursor-pointer ${
+                  isActive ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800'
+                }`}
               >
                 {route.title}
               </a>
