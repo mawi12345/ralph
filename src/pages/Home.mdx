@@ -17,16 +17,7 @@ MDX allows you to use JSX in your markdown content. You can import components, w
 ## Example Component
 
 export const Button = ({ children }) => (
-  <button style={{
-    padding: '10px 20px',
-    backgroundColor: '#0066cc',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    fontSize: '16px',
-    margin: '10px 0'
-  }}>
+  <button className="px-5 py-2.5 bg-blue-600 text-white rounded cursor-pointer my-2.5">
     {children}
   </button>
 )
