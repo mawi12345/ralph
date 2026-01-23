@@ -9,7 +9,12 @@
     @apply text-gray-800 antialiased leading-relaxed;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply mt-6 mb-4;
   }
 
@@ -33,11 +38,12 @@
     @apply text-blue-600 no-underline hover:underline;
   }
 
-  ul, ol {
+  ul,
+  ol {
     @apply ml-8 mb-4;
   }
 
-  mjx-container {
+  mjx-container svg {
     @apply inline;
   }
 }
