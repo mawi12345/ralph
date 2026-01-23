@@ -10,9 +10,9 @@ Minimal MDX React project for GitHub Pages.
 
 ## Commands
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
+- `bun run dev` - Start development server
+- `bun run build` - Build for production
+- `bun run preview` - Preview production build
 
 ## Project Structure
 
