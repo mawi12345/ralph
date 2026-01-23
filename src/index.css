@@ -36,4 +36,8 @@
   ul, ol {
     @apply ml-8 mb-4;
   }
+
+  mjx-container {
+    @apply inline;
+  }
 }
