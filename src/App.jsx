@@ -21,8 +21,8 @@ function getRouteFromPath(pathname, basePath = '/ralph/') {
 }
 
 const components = {
-  h1: (props) => <h1 className="text-slate-800" {...props} />,
-  h2: (props) => <h2 className="text-slate-700" {...props} />,
+  h1: (props) => <h1 className="text-4xl font-bold text-slate-800" {...props} />,
+  h2: (props) => <h2 className="text-2xl font-semibold text-slate-700" {...props} />,
 }
 
 function App({ serverUrl }) {
@@ -90,7 +90,7 @@ function App({ serverUrl }) {
   return (
     <MDXProvider components={mdxComponents}>
       <div className="App">
-        <nav className="p-2.5 border-b border-gray-300 mb-5">
+        <nav className="p-2.5 border-b border-gray-300 mb-5 print:hidden">
           {routes.map(route => {
             const href = `/ralph${route.path === '/' ? '/' : route.path + '/'}`
             const isActive = currentRoute.name === route.name
