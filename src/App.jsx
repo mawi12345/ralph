@@ -87,27 +87,45 @@ function App({ serverUrl }) {
 
   const PageComponent = currentRoute.component
 
+  // Handle link clicks for SPA navigation (progressive enhancement)
+  const handleLinkClick = (e, routeName) => {
+    // Only intercept if JavaScript is enabled
+    if (typeof window !== 'undefined' && window.history) {
+      e.preventDefault()
+      navigate(routeName)
+    }
+    // Otherwise, let the browser handle the navigation normally
+  }
+
   return (
     <MDXProvider components={mdxComponents}>
       <div className="App">
         <nav style={{ padding: '10px', borderBottom: '1px solid #ddd', marginBottom: '20px' }}>
-          {routes.map(route => (
-            <button
-              key={route.name}
-              onClick={() => navigate(route.name)}
-              style={{
-                padding: '8px 16px',
-                marginRight: '10px',
-                backgroundColor: currentRoute.name === route.name ? '#0066cc' : '#f0f0f0',
-                color: currentRoute.name === route.name ? 'white' : '#333',
-                border: '1px solid #ddd',
-                borderRadius: '4px',
-                cursor: 'pointer',
-              }}
-            >
-              {route.title}
-            </button>
-          ))}
+          {routes.map(route => {
+            const href = `/ralph${route.path === '/' ? '/' : route.path + '/'}`
+            const isActive = currentRoute.name === route.name
+
+            return (
+              <a
+                key={route.name}
+                href={href}
+                onClick={(e) => handleLinkClick(e, route.name)}
+                style={{
+                  display: 'inline-block',
+                  padding: '8px 16px',
+                  marginRight: '10px',
+                  backgroundColor: isActive ? '#0066cc' : '#f0f0f0',
+                  color: isActive ? 'white' : '#333',
+                  border: '1px solid #ddd',
+                  borderRadius: '4px',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                {route.title}
+              </a>
+            )
+          })}
         </nav>
         <PageComponent />
       </div>
