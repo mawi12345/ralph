@@ -3,6 +3,7 @@ import { MDXProvider } from "@mdx-js/react";
 import HomePage from "./pages/Home.mdx";
 import PotenzschreibweisePage from "./pages/potenzschreibweise/index.mdx";
 import PotenzschreibweiseU1Page from "./pages/potenzschreibweise/u1.mdx";
+import PotenzschreibweiseTextbeispielePage from "./pages/potenzschreibweise/textbeispiele.mdx";
 
 // Define available routes
 export const routes = [
@@ -18,6 +19,12 @@ export const routes = [
     name: "potenzschreibweise-u1",
     component: PotenzschreibweiseU1Page,
     title: "Potenzschreibweise - Übung 1",
+  },
+  {
+    path: "/potenzschreibweise/textbeispiele",
+    name: "potenzschreibweise-textbeispiele",
+    component: PotenzschreibweiseTextbeispielePage,
+    title: "Potenzschreibweise - Textbeispiele",
   },
 ];
 
