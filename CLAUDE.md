@@ -2,6 +2,11 @@
 
 Minimal MDX React project for GitHub Pages with SSR/Static Site Generation.
 
+## Language
+
+- **Content**: All MDX content (pages, text) should be written in German
+- **Code**: Components and code remain in English
+
 ## Tech Stack
 
 - React 19 with Vite 7
