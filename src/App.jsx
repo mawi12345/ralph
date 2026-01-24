@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import HomePage from "./pages/Home.mdx";
 import PotenzschreibweisePage from "./pages/potenzschreibweise/index.mdx";
+import PotenzschreibweiseU1Page from "./pages/potenzschreibweise/u1.mdx";
 
 // Define available routes
 export const routes = [
@@ -11,6 +12,12 @@ export const routes = [
     name: "potenzschreibweise",
     component: PotenzschreibweisePage,
     title: "Potenzschreibweise",
+  },
+  {
+    path: "/potenzschreibweise/u1",
+    name: "potenzschreibweise-u1",
+    component: PotenzschreibweiseU1Page,
+    title: "Potenzschreibweise - Übung 1",
   },
 ];
 
