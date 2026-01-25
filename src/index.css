@@ -68,6 +68,10 @@
     @apply text-green-600 font-semibold;
   }
 
+  .hide-solutions .solution {
+    @apply invisible;
+  }
+
   /* move section numbers to the left */
   .section-number {
     width: 40px;
