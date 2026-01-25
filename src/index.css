@@ -70,8 +70,12 @@
     @apply text-green-600 font-semibold;
   }
 
-  .hide-solutions .solution {
+  .App.hide-solutions .solution {
     @apply invisible;
+  }
+
+  .App:not(.hide-solutions) .solution-toggle {
+    @apply bg-green-600 text-white;
   }
 
   /* move section numbers to the left */

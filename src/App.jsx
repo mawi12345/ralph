@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import HomePage from "./pages/Home.mdx";
 import PotenzschreibweisePage from "./pages/potenzschreibweise/index.mdx";
@@ -57,7 +57,11 @@ function App({ serverUrl }) {
   };
 
   const [currentRoute, setCurrentRoute] = useState(getInitialRoute);
-  const [showSolutions, setShowSolutions] = useState(true);
+  const appRef = useRef(null);
+
+  const toggleSolutions = () => {
+    appRef.current?.classList.toggle("hide-solutions");
+  };
 
   // Handle browser back/forward navigation
   useEffect(() => {
@@ -112,7 +116,7 @@ function App({ serverUrl }) {
 
   return (
     <MDXProvider components={mdxComponents}>
-      <div className="App">
+      <div ref={appRef} className="App">
         <nav className="p-2.5 border-b border-gray-300 mb-5 flex justify-between items-center">
           <div>
             {routes.map((route) => {
@@ -136,17 +140,13 @@ function App({ serverUrl }) {
             })}
           </div>
           <button
-            onClick={() => setShowSolutions(!showSolutions)}
-            className={`px-4 py-2 border border-gray-300 rounded cursor-pointer ${
-              showSolutions
-                ? "bg-green-600 text-white"
-                : "bg-gray-100 text-gray-800"
-            }`}
+            onClick={toggleSolutions}
+            className="solution-toggle px-4 py-2 border border-gray-300 rounded cursor-pointer"
           >
-            {showSolutions ? "Lösungen ausblenden" : "Lösungen einblenden"}
+            Lösungen ein-/ausblenden
           </button>
         </nav>
-        <div className={`content ${showSolutions ? "" : "hide-solutions"}`}>
+        <div className="content">
           <PageComponent />
         </div>
       </div>
