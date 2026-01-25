@@ -25,6 +25,11 @@ Minimal MDX React project for GitHub Pages with SSR/Static Site Generation.
 - Each `<Exercise>` includes the question text and the solution.
 - The answer must be on the same line.
 - Exercise with multi step solutions should use <br /> for line breaks and start with a line break.
+- **Proofs (A: and E:)**: Always show the entire calculation process with all intermediate steps:
+  1. Substitute variables with explicit factors (e.g., `3 \cdot 2` not just `6`)
+  2. Evaluate powers (e.g., `2^2 = 4`)
+  3. Calculate each multiplication
+  4. Show the final result
 
 ## Commands
 
