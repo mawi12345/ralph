@@ -74,13 +74,17 @@
 
   /* move section numbers to the left */
   .section-number {
-    width: 40px;
+    width: 50px;
     display: block;
     position: absolute;
-    left: -40px;
+    left: -50px;
   }
   /* add left margin to content to accommodate section numbers */
   .content {
-    margin-left: 40px;
+    margin-left: 50px;
+  }
+
+  .note {
+    display: none;
   }
 }

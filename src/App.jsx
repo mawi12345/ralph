@@ -88,6 +88,7 @@ function App({ serverUrl }) {
     ),
     Exercise: ({ children }) => <div className="exercise">{children}</div>,
     Solution: ({ children }) => <span className="solution">{children}</span>,
+    Note: ({ children }) => <span className="note">{children}</span>,
   };
 
   const PageComponent = currentRoute.component;

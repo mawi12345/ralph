@@ -18,6 +18,7 @@ Minimal MDX React project for GitHub Pages with SSR/Static Site Generation.
 
 - Use `\cdot` for multiplications
 - Format big numbers with thousands separators (groups of 3) with a space `\,`. Example $$ 12\,300\,000\,000\,000 \cdot 60 \cdot 60 = 44\,280\,000\,000\,000\,000 $$
+- Use `\underline{\hspace{12mm}}` for fill in the blank questions.
 
 ## Exercise format
 
