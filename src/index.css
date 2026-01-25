@@ -16,6 +16,7 @@
   h5,
   h6 {
     @apply mt-6 mb-4;
+    position: relative;
   }
 
   h1 {
@@ -65,5 +66,17 @@
 
   .solution {
     @apply text-green-600 font-semibold;
+  }
+
+  /* move section numbers to the left */
+  .section-number {
+    width: 40px;
+    display: block;
+    position: absolute;
+    left: -40px;
+  }
+  /* add left margin to content to accommodate section numbers */
+  .content {
+    margin-left: 40px;
   }
 }

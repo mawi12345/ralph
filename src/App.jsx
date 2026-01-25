@@ -116,7 +116,9 @@ function App({ serverUrl }) {
             );
           })}
         </nav>
-        <PageComponent />
+        <div class="content">
+          <PageComponent />
+        </div>
       </div>
     </MDXProvider>
   );

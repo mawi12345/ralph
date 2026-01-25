@@ -33,8 +33,15 @@ export default function rehypeNumberHeadings() {
       if (node.children && node.children.length > 0) {
         // Add section number as a text node at the beginning
         node.children.unshift({
-          type: 'text',
-          value: `${sectionNumber} `
+          type: 'element',
+          tagName: 'span',
+          properties: { className: ['section-number'] },
+          children: [
+            {
+              type: 'text',
+              value: `${sectionNumber} `
+            }
+          ]
         });
       }
     });
