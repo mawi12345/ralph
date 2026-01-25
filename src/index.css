@@ -62,6 +62,7 @@
 
   mjx-container svg {
     @apply inline;
+    margin-top: 10px;
   }
 
   .solution {
