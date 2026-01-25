@@ -17,6 +17,7 @@
   h6 {
     @apply mt-6 mb-4;
     position: relative;
+    break-after: avoid;
   }
 
   h1 {
@@ -98,9 +99,34 @@
     border: 1px solid;
     margin-bottom: -1px;
     padding: 10px;
+    break-inside: avoid;
   }
 
   .exercise p {
     margin-bottom: 0;
+  }
+}
+
+@media print {
+  nav {
+    display: none;
+  }
+
+  @page {
+    counter-increment: page;
+    size: A4;
+    margin-bottom: 20mm;
+    margin-left: 5mm;
+
+    @bottom-right {
+      padding-right: 20px;
+      font-size: 12px !important;
+      content: "Seite " counter(page) " von " counter(pages);
+      margin-right: 3mm;
+    }
+
+    @bottom-left {
+      margin-left: 23mm;
+    }
   }
 }

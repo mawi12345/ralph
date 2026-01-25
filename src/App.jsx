@@ -100,6 +100,15 @@ function App({ serverUrl }) {
     Exercise: ({ children }) => <div className="exercise">{children}</div>,
     Solution: ({ children }) => <span className="solution">{children}</span>,
     Note: ({ children }) => <span className="note">{children}</span>,
+    Footer: ({ text }) => (
+      <style>{`
+  @page {
+    @bottom-left {
+      content: "${text}";
+    }
+  }
+`}</style>
+    ),
   };
 
   const PageComponent = currentRoute.component;
