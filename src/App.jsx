@@ -3,6 +3,7 @@ import { MDXProvider } from "@mdx-js/react";
 import HomePage from "./pages/Home.mdx";
 import PotenzschreibweisePage from "./pages/potenzschreibweise/index.mdx";
 import TermePage from "./pages/terme/index.mdx";
+import GleichungenPage from "./pages/gleichungen/index.mdx";
 
 // Define available routes
 export const routes = [
@@ -18,6 +19,12 @@ export const routes = [
     name: "terme",
     component: TermePage,
     title: "Terme",
+  },
+  {
+    path: "/gleichungen",
+    name: "gleichungen",
+    component: GleichungenPage,
+    title: "Gleichungen",
   },
 ];
 
