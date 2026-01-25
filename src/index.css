@@ -70,7 +70,7 @@
     @apply text-green-600 font-semibold;
   }
 
-  .hide-solutions .solution {
+  .content.hide-solutions .solution {
     @apply invisible;
   }
 
