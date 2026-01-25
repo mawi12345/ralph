@@ -4,6 +4,7 @@ import HomePage from "./pages/Home.mdx";
 import PotenzschreibweisePage from "./pages/potenzschreibweise/index.mdx";
 import TermePage from "./pages/terme/index.mdx";
 import GleichungenPage from "./pages/gleichungen/index.mdx";
+import SchularbeitPage from "./pages/schularbeit/index.mdx";
 
 // Define available routes
 export const routes = [
@@ -25,6 +26,12 @@ export const routes = [
     name: "gleichungen",
     component: GleichungenPage,
     title: "Gleichungen",
+  },
+  {
+    path: "/schularbeit",
+    name: "schularbeit",
+    component: SchularbeitPage,
+    title: "Schularbeit",
   },
 ];
 
