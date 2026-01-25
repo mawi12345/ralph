@@ -16,15 +16,15 @@ Minimal MDX React project for GitHub Pages with SSR/Static Site Generation.
 
 ## MathJax
 
-- Use `\cdot` for multiplications
+- Use `\cdot` for multiplications and `\dfrac` for fractions
 - Format big numbers with thousands separators (groups of 3) with a space `\,`. Example $$ 12\,300\,000\,000\,000 \cdot 60 \cdot 60 = 44\,280\,000\,000\,000\,000 $$
-- Use `\underline{\hspace{12mm}}` for fill in the blank questions.
+- Use `\underline{\hspace{12mm}}` for fill in the blank questions
 
 ## Exercise format
 
-- Each `<Exercise>` includes the question text and the solution.
-- The answer must be on the same line.
-- Exercise with multi step solutions should use <br /> for line breaks and start with a line break.
+- Each `<Exercise>` includes the question text and the solution
+- The answer must be on the same line
+- Exercise with multi step solutions should use <br /> for line breaks and start with a line break
 - **Proofs (A: and E:)**: Always show the entire calculation process with all intermediate steps:
   1. Substitute variables with explicit factors (e.g., `3 \cdot 2` not just `6`)
   2. Evaluate powers (e.g., `2^2 = 4`)
