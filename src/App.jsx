@@ -43,6 +43,7 @@ function App({ serverUrl }) {
   };
 
   const [currentRoute, setCurrentRoute] = useState(getInitialRoute);
+  const [showSolutions, setShowSolutions] = useState(true);
 
   // Handle browser back/forward navigation
   useEffect(() => {
@@ -95,28 +96,40 @@ function App({ serverUrl }) {
   return (
     <MDXProvider components={mdxComponents}>
       <div className="App">
-        <nav className="p-2.5 border-b border-gray-300 mb-5">
-          {routes.map((route) => {
-            const href = `/ralph${route.path === "/" ? "/" : route.path + "/"}`;
-            const isActive = currentRoute.name === route.name;
+        <nav className="p-2.5 border-b border-gray-300 mb-5 flex justify-between items-center">
+          <div>
+            {routes.map((route) => {
+              const href = `/ralph${route.path === "/" ? "/" : route.path + "/"}`;
+              const isActive = currentRoute.name === route.name;
 
-            return (
-              <a
-                key={route.name}
-                href={href}
-                onClick={(e) => handleLinkClick(e, route.name)}
-                className={`inline-block px-4 py-2 mr-2.5 border border-gray-300 rounded no-underline cursor-pointer ${
-                  isActive
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-100 text-gray-800"
-                }`}
-              >
-                {route.title}
-              </a>
-            );
-          })}
+              return (
+                <a
+                  key={route.name}
+                  href={href}
+                  onClick={(e) => handleLinkClick(e, route.name)}
+                  className={`inline-block px-4 py-2 mr-2.5 border border-gray-300 rounded no-underline cursor-pointer ${
+                    isActive
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-100 text-gray-800"
+                  }`}
+                >
+                  {route.title}
+                </a>
+              );
+            })}
+          </div>
+          <button
+            onClick={() => setShowSolutions(!showSolutions)}
+            className={`px-4 py-2 border border-gray-300 rounded cursor-pointer ${
+              showSolutions
+                ? "bg-green-600 text-white"
+                : "bg-gray-100 text-gray-800"
+            }`}
+          >
+            {showSolutions ? "Lösungen ausblenden" : "Lösungen einblenden"}
+          </button>
         </nav>
-        <div class="content">
+        <div className={`content ${showSolutions ? "" : "hide-solutions"}`}>
           <PageComponent />
         </div>
       </div>
