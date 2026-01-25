@@ -16,13 +16,13 @@ Minimal MDX React project for GitHub Pages with SSR/Static Site Generation.
 
 ## MathJax
 
-- Use `\times` for multiplications
-- Format big numbers with thousands separators (groups of 3) with a space `\,`. Example $$ 12\,300\,000\,000\,000 \times 60 \times 60 = 44\,280\,000\,000\,000\,000 $$
+- Use `\cdot` for multiplications
+- Format big numbers with thousands separators (groups of 3) with a space `\,`. Example $$ 12\,300\,000\,000\,000 \cdot 60 \cdot 60 = 44\,280\,000\,000\,000\,000 $$
 
 ## Exercise format
 
-- Every `exercise` is wrap with a <div class="exercise">
-- The content oh this div is a specification text followed by <span class="solution"> wrapping the solution. Keep the <span class="solution"> on the same line.
+- Each `<Exercise>` includes the question text and the solution.
+- The answer must be on the same line.
 - Exercise with multi step solutions should use <br /> for line breaks and start with a line break.
 
 ## Commands
