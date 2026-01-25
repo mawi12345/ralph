@@ -87,4 +87,14 @@
   .note {
     display: none;
   }
+
+  .exercise {
+    border: 1px solid;
+    margin-bottom: -1px;
+    padding: 10px;
+  }
+
+  .exercise p {
+    margin-bottom: 0;
+  }
 }
