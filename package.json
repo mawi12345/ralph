@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "@mdx-js/react": "^3.1.1",
+    "daisyui": "^5.5.14",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "rehype-mathjax": "^7.1.0",

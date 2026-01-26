@@ -96,14 +96,6 @@ function App({ serverUrl }) {
   // Make navigation available to MDX pages
   const mdxComponents = {
     ...components,
-    NavigateButton: ({ to, children }) => (
-      <button
-        onClick={() => navigate(to)}
-        className="px-5 py-2.5 bg-blue-600 text-white rounded cursor-pointer my-2.5 mx-1"
-      >
-        {children}
-      </button>
-    ),
     Exercise: ({ children }) => <div className="exercise">{children}</div>,
     Solution: ({ children }) => <span className="solution">{children}</span>,
     Points: ({ children }) => <div className="points">{children}</div>,
@@ -121,53 +113,38 @@ function App({ serverUrl }) {
 
   const PageComponent = currentRoute.component;
 
-  // Handle link clicks for SPA navigation (progressive enhancement)
-  const handleLinkClick = (e, routeName) => {
-    // Only intercept if JavaScript is enabled
-    if (typeof window !== "undefined" && window.history) {
-      e.preventDefault();
-      navigate(routeName);
-    }
-    // Otherwise, let the browser handle the navigation normally
-  };
-
   return (
-    <MDXProvider components={mdxComponents}>
-      <div ref={appRef} className="App">
-        <nav className="p-2.5 border-b border-gray-300 mb-5 flex justify-between items-center">
-          <div>
-            {routes.map((route) => {
-              const href = `/ralph${route.path === "/" ? "/" : route.path + "/"}`;
-              const isActive = currentRoute.name === route.name;
-
-              return (
-                <a
-                  key={route.name}
-                  href={href}
-                  onClick={(e) => handleLinkClick(e, route.name)}
-                  className={`inline-block px-4 py-2 mr-2.5 border border-gray-300 rounded no-underline cursor-pointer ${
-                    isActive
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-100 text-gray-800"
-                  }`}
-                >
-                  {route.title}
-                </a>
-              );
-            })}
-          </div>
-          <button
-            onClick={toggleSolutions}
-            className="solution-toggle px-4 py-2 border border-gray-300 rounded cursor-pointer"
+    <div ref={appRef} className="App">
+      <nav className="navbar bg-base-100 shadow-sm print:hidden">
+        <div className="max-w-4xl mx-auto flex w-full">
+          <a class="btn btn-ghost text-xl" onClick={() => navigate("home")}>
+            Ralph
+          </a>
+          <select
+            className="select"
+            value={currentRoute.name}
+            onChange={(e) => navigate(e.target.value)}
           >
+            {routes.map((route) => (
+              <option key={route.name} value={route.name}>
+                {route.title}
+              </option>
+            ))}
+          </select>
+          <div className="flex-grow"></div>
+          <button onClick={toggleSolutions} className="solution-toggle btn">
             Lösungen ein-/ausblenden
           </button>
-        </nav>
-        <div className="content">
-          <PageComponent />
         </div>
+      </nav>
+      <div className="max-w-4xl mx-auto px-8">
+        <MDXProvider components={mdxComponents}>
+          <div className="content">
+            <PageComponent />
+          </div>
+        </MDXProvider>
       </div>
-    </MDXProvider>
+    </div>
   );
 }
 
