@@ -121,44 +121,24 @@ function App({ serverUrl }) {
 
   const PageComponent = currentRoute.component;
 
-  // Handle link clicks for SPA navigation (progressive enhancement)
-  const handleLinkClick = (e, routeName) => {
-    // Only intercept if JavaScript is enabled
-    if (typeof window !== "undefined" && window.history) {
-      e.preventDefault();
-      navigate(routeName);
-    }
-    // Otherwise, let the browser handle the navigation normally
-  };
-
   return (
     <MDXProvider components={mdxComponents}>
       <div ref={appRef} className="App">
-        <nav className="p-2.5 border-b border-gray-300 mb-5 flex justify-between items-center">
-          <div>
-            {routes.map((route) => {
-              const href = `/ralph${route.path === "/" ? "/" : route.path + "/"}`;
-              const isActive = currentRoute.name === route.name;
-
-              return (
-                <a
-                  key={route.name}
-                  href={href}
-                  onClick={(e) => handleLinkClick(e, route.name)}
-                  className={`inline-block px-4 py-2 mr-2.5 border border-gray-300 rounded no-underline cursor-pointer ${
-                    isActive
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-100 text-gray-800"
-                  }`}
-                >
-                  {route.title}
-                </a>
-              );
-            })}
-          </div>
+        <nav className="p-2.5 border-b border-gray-300 mb-5 flex justify-between items-center print:hidden">
+          <select
+            className="select"
+            value={currentRoute.name}
+            onChange={(e) => navigate(e.target.value)}
+          >
+            {routes.map((route) => (
+              <option key={route.name} value={route.name}>
+                {route.title}
+              </option>
+            ))}
+          </select>
           <button
             onClick={toggleSolutions}
-            className="solution-toggle px-4 py-2 border border-gray-300 rounded cursor-pointer"
+            className="solution-toggle btn"
           >
             Lösungen ein-/ausblenden
           </button>

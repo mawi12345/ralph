@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 @layer base {
   #root {
@@ -121,10 +122,6 @@
 }
 
 @media print {
-  nav {
-    display: none;
-  }
-
   @page {
     counter-increment: page;
     size: A4;
