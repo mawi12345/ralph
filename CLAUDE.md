@@ -31,6 +31,43 @@ Minimal MDX React project for GitHub Pages with SSR/Static Site Generation.
   3. Calculate each multiplication
   4. Show the final result
 
+## Punkte-Schema
+
+Jede Übung erhält Punkte basierend auf Schwierigkeit und Anzahl der Rechenschritte. Die Punkte werden mit `<Points>X</Points>` nach der `</Solution>` angegeben.
+
+### Punkterichtlinien:
+
+| Punkte | Beschreibung |
+|--------|--------------|
+| 1 | Einfache einschrittige Aufgaben (r/f Fragen, Formelerkennung, einfache Gleichungen ohne Probe) |
+| 2 | Einfache Umwandlungen, Vereinfachungen, Verteilungsgesetz, binomische Formeln direkt anwenden |
+| 3 | Mehrschrittige Aufgaben (Klammern auflösen + vereinfachen, Gleichungen mit Probe, Faktorzerlegung) |
+| 4 | Komplexere Terme/Gleichungen (Variable auf beiden Seiten, geschachtelte Klammern, Textaufgaben) |
+| 5-6 | Aufgaben mit mehreren Techniken kombiniert oder ausführlicher Probe (A: und E:) |
+| 6-8 | Sehr komplexe Aufgaben mit vollständiger Probe und mehreren Zwischenschritten |
+
+### Beispiele:
+
+```mdx
+<!-- 1 Punkt: Einfache Gleichung -->
+<Exercise>
+$$ x + 5 = 12 $$ <Solution>$$ x = 7 $$</Solution>
+<Points>1</Points>
+</Exercise>
+
+<!-- 3 Punkte: Gleichung mit Probe -->
+<Exercise>
+$$ 2x + 5 = 13 $$ <Solution><br />$$ 2x = 8 $$<br />$$ x = 4 $$</Solution><br />Probe: <Solution>$$ 2 \cdot 4 + 5 = 13 $$ &#10003;</Solution>
+<Points>3</Points>
+</Exercise>
+
+<!-- 6 Punkte: Komplexe Aufgabe mit A: und E: Probe -->
+<Exercise>
+$$ (x + 5)^2 - 5x + x^2 = $$ <Solution>...</Solution><br />A: <Solution>...</Solution><br />E: <Solution>...</Solution>
+<Points>6</Points>
+</Exercise>
+```
+
 ## Commands
 
 - `bun run dev` - Start development server
