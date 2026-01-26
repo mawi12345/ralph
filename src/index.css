@@ -64,7 +64,6 @@
   mjx-container svg {
     @apply inline;
     margin-top: 10px;
-    margin-right: 20px;
   }
 
   .solution {
@@ -96,14 +95,28 @@
   }
 
   .exercise {
+    position: relative;
     border: 1px solid;
     margin-bottom: -1px;
     padding: 10px;
     break-inside: avoid;
+    width: calc(100% - 44px);
   }
 
   .exercise p {
     margin-bottom: 0;
+  }
+
+  .exercise .points {
+    position: absolute;
+    left: 100%;
+    top: -1px;
+    bottom: -1px;
+    display: flex;
+    border: 1px solid black;
+    padding: 4px 10px;
+    width: 44px;
+    justify-content: center;
   }
 }
 

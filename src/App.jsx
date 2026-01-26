@@ -106,6 +106,7 @@ function App({ serverUrl }) {
     ),
     Exercise: ({ children }) => <div className="exercise">{children}</div>,
     Solution: ({ children }) => <span className="solution">{children}</span>,
+    Points: ({ children }) => <div className="points">{children}</div>,
     Note: ({ children }) => <span className="note">{children}</span>,
     Footer: ({ text }) => (
       <style>{`
