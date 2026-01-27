@@ -1,4 +1,10 @@
-import { useState, useEffect, useRef, ComponentType, ReactNode } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  type ComponentType,
+  type ReactNode,
+} from "react";
 import { MDXProvider } from "@mdx-js/react";
 import HomePage from "./pages/Home.mdx";
 import PotenzschreibweisePage from "./pages/potenzschreibweise/index.mdx";
@@ -50,7 +56,7 @@ function getRouteFromPath(pathname: string, basePath = "/ralph/"): Route {
   if (path.endsWith("/index.html")) {
     path = path.replace("/index.html", "") || "/";
   }
-  return routes.find((r) => r.path === path) || routes[0];
+  return routes.find((r) => r.path === path) || (routes[0] as Route);
 }
 
 interface MDXComponentProps {
@@ -59,8 +65,12 @@ interface MDXComponentProps {
 }
 
 const components = {
-  h1: (props: MDXComponentProps) => <h1 className="text-slate-800" {...props} />,
-  h2: (props: MDXComponentProps) => <h2 className="text-slate-700" {...props} />,
+  h1: (props: MDXComponentProps) => (
+    <h1 className="text-slate-800" {...props} />
+  ),
+  h2: (props: MDXComponentProps) => (
+    <h2 className="text-slate-700" {...props} />
+  ),
 };
 
 interface AppProps {
@@ -76,7 +86,7 @@ function App({ serverUrl }: AppProps) {
     if (typeof window !== "undefined") {
       return getRouteFromPath(window.location.pathname);
     }
-    return routes[0];
+    return routes[0] as Route;
   };
 
   const [currentRoute, setCurrentRoute] = useState(getInitialRoute);
@@ -100,7 +110,8 @@ function App({ serverUrl }: AppProps) {
 
   // Navigate to a new route
   const navigate = (routeName: string) => {
-    const route = routes.find((r) => r.name === routeName) || routes[0];
+    const route =
+      routes.find((r) => r.name === routeName) || (routes[0] as Route);
     setCurrentRoute(route);
     if (typeof window !== "undefined") {
       const newUrl = `/ralph${route.path === "/" ? "/" : route.path + "/"}`;
@@ -112,10 +123,18 @@ function App({ serverUrl }: AppProps) {
   // Make navigation available to MDX pages
   const mdxComponents = {
     ...components,
-    Exercise: ({ children }: { children?: ReactNode }) => <div className="exercise">{children}</div>,
-    Solution: ({ children }: { children?: ReactNode }) => <span className="solution">{children}</span>,
-    Points: ({ children }: { children?: ReactNode }) => <div className="points">{children}</div>,
-    Note: ({ children }: { children?: ReactNode }) => <span className="note">{children}</span>,
+    Exercise: ({ children }: { children?: ReactNode }) => (
+      <div className="exercise">{children}</div>
+    ),
+    Solution: ({ children }: { children?: ReactNode }) => (
+      <span className="solution">{children}</span>
+    ),
+    Points: ({ children }: { children?: ReactNode }) => (
+      <div className="points">{children}</div>
+    ),
+    Note: ({ children }: { children?: ReactNode }) => (
+      <span className="note">{children}</span>
+    ),
     Footer: ({ text }: { text: string }) => (
       <style>{`
   @page {
@@ -147,7 +166,7 @@ function App({ serverUrl }: AppProps) {
               </option>
             ))}
           </select>
-          <div className="flex-grow"></div>
+          <div className="grow"></div>
           <button onClick={toggleSolutions} className="solution-toggle btn">
             Lösungen ein-/ausblenden
           </button>

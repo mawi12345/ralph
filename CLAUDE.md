@@ -71,6 +71,7 @@ $$ (x + 5)^2 - 5x + x^2 = $$ <Solution>...</Solution><br />A: <Solution>...</Sol
 ## Commands
 
 - `bun run dev` - Start development server
+- `bun run tsc` - Type checking 
 - `bun run build` - Build for production (generates static HTML for all routes)
 - `bun run preview` - Preview production build
 
@@ -78,17 +79,17 @@ $$ (x + 5)^2 - 5x + x^2 = $$ <Solution>...</Solution><br />A: <Solution>...</Sol
 
 - `src/pages/` - MDX content pages
 - `src/pages/:topic/index.mdx` - Every topic contains a `index.mdx` with examples.
-- `src/App.jsx` - Main app component with routing
-- `src/entry-client.jsx` - Client-side hydration entry point
-- `src/entry-server.jsx` - Server-side rendering entry point
-- `prerender.js` - Static HTML generation script
+- `src/App.tsx` - Main app component with routing
+- `src/entry-client.tsx` - Client-side hydration entry point
+- `src/entry-server.tsx` - Server-side rendering entry point
+- `prerender.ts` - Static HTML generation script
 - `public/` - Static assets
 
 ## Adding New Routes
 
-To add a new route, update the `routes` array in `src/App.jsx`:
+To add a new route, update the `routes` array in `src/App.tsx`:
 
-```jsx
+```tsx
 export const routes = [
   { path: "/", name: "home", component: HomePage, title: "Home" },
   // Add new routes here
