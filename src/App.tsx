@@ -1,52 +1,6 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  type ComponentType,
-  type ReactNode,
-} from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import { MDXProvider } from "@mdx-js/react";
-import HomePage from "./pages/Home.mdx";
-import PotenzschreibweisePage from "./pages/potenzschreibweise/index.mdx";
-import TermePage from "./pages/terme/index.mdx";
-import GleichungenPage from "./pages/gleichungen/index.mdx";
-import SchularbeitPage from "./pages/schularbeit/index.mdx";
-
-export interface Route {
-  path: string;
-  name: string;
-  component: ComponentType;
-  title: string;
-}
-
-// Define available routes
-export const routes: Route[] = [
-  { path: "/", name: "home", component: HomePage, title: "Home" },
-  {
-    path: "/potenzschreibweise",
-    name: "potenzschreibweise",
-    component: PotenzschreibweisePage,
-    title: "Potenzschreibweise",
-  },
-  {
-    path: "/terme",
-    name: "terme",
-    component: TermePage,
-    title: "Terme",
-  },
-  {
-    path: "/gleichungen",
-    name: "gleichungen",
-    component: GleichungenPage,
-    title: "Gleichungen",
-  },
-  {
-    path: "/schularbeit",
-    name: "schularbeit",
-    component: SchularbeitPage,
-    title: "Schularbeit",
-  },
-];
+import { routes, type Route } from "./routes";
 
 // Helper to get route from pathname
 function getRouteFromPath(pathname: string, basePath = "/ralph/"): Route {
@@ -63,15 +17,6 @@ interface MDXComponentProps {
   children?: ReactNode;
   [key: string]: unknown;
 }
-
-const components = {
-  h1: (props: MDXComponentProps) => (
-    <h1 className="text-slate-800" {...props} />
-  ),
-  h2: (props: MDXComponentProps) => (
-    <h2 className="text-slate-700" {...props} />
-  ),
-};
 
 interface AppProps {
   serverUrl?: string;
@@ -120,9 +65,7 @@ function App({ serverUrl }: AppProps) {
     }
   };
 
-  // Make navigation available to MDX pages
   const mdxComponents = {
-    ...components,
     Exercise: ({ children }: { children?: ReactNode }) => (
       <div className="exercise">{children}</div>
     ),
@@ -175,6 +118,9 @@ function App({ serverUrl }: AppProps) {
       <div className="max-w-4xl mx-auto px-8">
         <MDXProvider components={mdxComponents}>
           <div className="content">
+            <div className="page-header text-3xl mt-6 mb-4">
+              {currentRoute.title}
+            </div>
             <PageComponent />
           </div>
         </MDXProvider>

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default;
+  exclude: properties;
 }
 
 @layer base {
@@ -20,19 +21,19 @@
   }
 
   h1 {
-    @apply text-3xl;
-  }
-
-  h2 {
     @apply text-2xl;
   }
 
-  h3 {
+  h2 {
     @apply text-xl;
   }
 
+  h3 {
+    @apply text-lg;
+  }
+
   h4 {
-    @apply text-xl;
+    @apply text-lg;
   }
 
   p {
@@ -68,6 +69,10 @@ mjx-container svg {
 
 .solution {
   @apply text-green-600 font-semibold;
+}
+
+mjx-container:has(+ .solution) svg {
+  margin-right: 10px;
 }
 
 .App.hide-solutions .solution {

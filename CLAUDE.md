@@ -78,7 +78,6 @@ $$ (x + 5)^2 - 5x + x^2 = $$ <Solution>...</Solution><br />A: <Solution>...</Sol
 ## Project Structure
 
 - `src/pages/` - MDX content pages
-- `src/pages/:topic/index.mdx` - Every topic contains a `index.mdx` with examples.
 - `src/App.tsx` - Main app component with routing
 - `src/entry-client.tsx` - Client-side hydration entry point
 - `src/entry-server.tsx` - Server-side rendering entry point

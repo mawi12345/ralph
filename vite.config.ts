@@ -1,29 +1,30 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-import mdx from '@mdx-js/rollup'
-import remarkMath from 'remark-math'
-import rehypeMathjax from 'rehype-mathjax'
-import rehypeNumberHeadings from './plugins/rehype-number-headings'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import mdx from "@mdx-js/rollup";
+import remarkMath from "remark-math";
+import rehypeMathjax from "rehype-mathjax";
+import rehypeNumberHeadings from "./plugins/rehype-number-headings";
 
 export default defineConfig({
-  base: '/ralph/',
+  base: "/ralph/",
   plugins: [
     {
-      enforce: 'pre',
+      enforce: "pre",
       ...mdx({
         remarkPlugins: [remarkMath],
         rehypePlugins: [rehypeNumberHeadings, rehypeMathjax],
-        providerImportSource: "@mdx-js/react"
-      })
+        providerImportSource: "@mdx-js/react",
+      }),
     },
     react(),
-    tailwindcss()
+    tailwindcss(),
   ],
   build: {
-    outDir: 'dist'
+    outDir: "dist",
+    chunkSizeWarningLimit: 16000,
   },
   ssr: {
-    noExternal: ['@mdx-js/react']
-  }
-})
+    noExternal: ["@mdx-js/react"],
+  },
+});
