@@ -1,14 +1,15 @@
 import { visit } from 'unist-util-visit';
+import type { Root, Element } from 'hast';
 
 /**
  * Rehype plugin to automatically number headings similar to pandoc's --number-sections
  * Numbers headings hierarchically (e.g., 1, 1.1, 1.2, 2, 2.1, etc.)
  */
 export default function rehypeNumberHeadings() {
-  return (tree) => {
+  return (tree: Root) => {
     const counters = [0, 0, 0, 0, 0, 0]; // Counters for h1-h6
 
-    visit(tree, 'element', (node) => {
+    visit(tree, 'element', (node: Element) => {
       // Check if the node is a heading (h1-h6)
       const match = node.tagName.match(/^h([1-6])$/);
       if (!match) return;

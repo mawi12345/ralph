@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import mdx from '@mdx-js/rollup'
 import remarkMath from 'remark-math'
 import rehypeMathjax from 'rehype-mathjax'
-import rehypeNumberHeadings from './plugins/rehype-number-headings.js'
+import rehypeNumberHeadings from './plugins/rehype-number-headings'
 
 export default defineConfig({
   base: '/ralph/',
