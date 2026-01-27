@@ -1,4 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  type ComponentType,
+  type ReactNode,
+} from "react";
 import { MDXProvider } from "@mdx-js/react";
 import HomePage from "./pages/Home.mdx";
 import PotenzschreibweisePage from "./pages/potenzschreibweise/index.mdx";
@@ -6,8 +12,15 @@ import TermePage from "./pages/terme/index.mdx";
 import GleichungenPage from "./pages/gleichungen/index.mdx";
 import SchularbeitPage from "./pages/schularbeit/index.mdx";
 
+export interface Route {
+  path: string;
+  name: string;
+  component: ComponentType;
+  title: string;
+}
+
 // Define available routes
-export const routes = [
+export const routes: Route[] = [
   { path: "/", name: "home", component: HomePage, title: "Home" },
   {
     path: "/potenzschreibweise",
@@ -36,35 +49,48 @@ export const routes = [
 ];
 
 // Helper to get route from pathname
-function getRouteFromPath(pathname, basePath = "/ralph/") {
+function getRouteFromPath(pathname: string, basePath = "/ralph/"): Route {
   // Remove base path and trailing slash
   let path = pathname.replace(basePath, "/").replace(/\/$/, "") || "/";
   // Handle index.html
   if (path.endsWith("/index.html")) {
     path = path.replace("/index.html", "") || "/";
   }
-  return routes.find((r) => r.path === path) || routes[0];
+  return routes.find((r) => r.path === path) || (routes[0] as Route);
+}
+
+interface MDXComponentProps {
+  children?: ReactNode;
+  [key: string]: unknown;
 }
 
 const components = {
-  h1: (props) => <h1 className="text-slate-800" {...props} />,
-  h2: (props) => <h2 className="text-slate-700" {...props} />,
+  h1: (props: MDXComponentProps) => (
+    <h1 className="text-slate-800" {...props} />
+  ),
+  h2: (props: MDXComponentProps) => (
+    <h2 className="text-slate-700" {...props} />
+  ),
 };
 
-function App({ serverUrl }) {
+interface AppProps {
+  serverUrl?: string;
+}
+
+function App({ serverUrl }: AppProps) {
   // Determine initial route from server URL or browser location
-  const getInitialRoute = () => {
+  const getInitialRoute = (): Route => {
     if (serverUrl) {
       return getRouteFromPath(serverUrl);
     }
     if (typeof window !== "undefined") {
       return getRouteFromPath(window.location.pathname);
     }
-    return routes[0];
+    return routes[0] as Route;
   };
 
   const [currentRoute, setCurrentRoute] = useState(getInitialRoute);
-  const appRef = useRef(null);
+  const appRef = useRef<HTMLDivElement>(null);
 
   const toggleSolutions = () => {
     appRef.current?.classList.toggle("hide-solutions");
@@ -83,8 +109,9 @@ function App({ serverUrl }) {
   }, []);
 
   // Navigate to a new route
-  const navigate = (routeName) => {
-    const route = routes.find((r) => r.name === routeName) || routes[0];
+  const navigate = (routeName: string) => {
+    const route =
+      routes.find((r) => r.name === routeName) || (routes[0] as Route);
     setCurrentRoute(route);
     if (typeof window !== "undefined") {
       const newUrl = `/ralph${route.path === "/" ? "/" : route.path + "/"}`;
@@ -96,11 +123,19 @@ function App({ serverUrl }) {
   // Make navigation available to MDX pages
   const mdxComponents = {
     ...components,
-    Exercise: ({ children }) => <div className="exercise">{children}</div>,
-    Solution: ({ children }) => <span className="solution">{children}</span>,
-    Points: ({ children }) => <div className="points">{children}</div>,
-    Note: ({ children }) => <span className="note">{children}</span>,
-    Footer: ({ text }) => (
+    Exercise: ({ children }: { children?: ReactNode }) => (
+      <div className="exercise">{children}</div>
+    ),
+    Solution: ({ children }: { children?: ReactNode }) => (
+      <span className="solution">{children}</span>
+    ),
+    Points: ({ children }: { children?: ReactNode }) => (
+      <div className="points">{children}</div>
+    ),
+    Note: ({ children }: { children?: ReactNode }) => (
+      <span className="note">{children}</span>
+    ),
+    Footer: ({ text }: { text: string }) => (
       <style>{`
   @page {
     @bottom-left {
@@ -117,7 +152,7 @@ function App({ serverUrl }) {
     <div ref={appRef} className="App">
       <nav className="navbar bg-base-100 shadow-sm print:hidden">
         <div className="max-w-4xl mx-auto flex w-full">
-          <a class="btn btn-ghost text-xl" onClick={() => navigate("home")}>
+          <a className="btn btn-ghost text-xl" onClick={() => navigate("home")}>
             Ralph
           </a>
           <select
@@ -131,7 +166,7 @@ function App({ serverUrl }) {
               </option>
             ))}
           </select>
-          <div className="flex-grow"></div>
+          <div className="grow"></div>
           <button onClick={toggleSolutions} className="solution-toggle btn">
             Lösungen ein-/ausblenden
           </button>

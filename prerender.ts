@@ -1,12 +1,19 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import type { Route } from './src/App'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const toAbsolute = (p) => path.resolve(__dirname, p)
+const toAbsolute = (p: string) => path.resolve(__dirname, p)
 
 const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8')
-const { render, routes } = await import('./dist/server/entry-server.js')
+const { render, routes } = await import(
+  // @ts-expect-error - dist/server/entry-server.js is generated during build
+  './dist/server/entry-server.js'
+) as {
+  render: (url: string) => { html: string };
+  routes: Route[];
+}
 
 // Generate HTML for each route
 for (const route of routes) {
@@ -19,7 +26,7 @@ for (const route of routes) {
     .replace('<!--app-title-->', title)
 
   // Determine output file path
-  let filePath
+  let filePath: string
   if (route.path === '/') {
     filePath = 'dist/index.html'
   } else {
