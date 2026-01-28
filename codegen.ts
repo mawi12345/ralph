@@ -19,6 +19,8 @@ const pages = fs
   .readdirSync(toAbsolute("src/pages"))
   .filter((file) => file.endsWith(".mdx"));
 
+pages.sort();
+
 const names = pages.map((page) => {
   const name = path.basename(page, ".mdx");
   return {
@@ -44,6 +46,7 @@ export type MDXPageModule = {
   title?: string;
   grade?: number;
   subject?: string;
+  format?: string;
 };
 `);
 

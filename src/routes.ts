@@ -8,6 +8,7 @@ export interface Route {
   title: string;
   grade?: number;
   subject?: string;
+  format?: string;
 }
 
 export const routes: Route[] = pages.map((page) => ({
@@ -17,6 +18,7 @@ export const routes: Route[] = pages.map((page) => ({
   title: page.imp.title || page.name,
   grade: page.imp.grade,
   subject: page.imp.subject,
+  format: page.imp.format,
 }));
 
 // Sort routes by title alphabetically

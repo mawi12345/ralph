@@ -4,9 +4,10 @@
 import type { ComponentType } from "react";
 import * as ImpGleichungen from "./pages/gleichungen.mdx";
 import * as ImpHome from "./pages/home.mdx";
-import * as ImpPotenzschreibweise from "./pages/potenzschreibweise.mdx";
-import * as ImpMatheTraining1 from "./pages/mathe-training-1.mdx";
 import * as ImpMatheSchularbeit1 from "./pages/mathe-schularbeit-1.mdx";
+import * as ImpMatheTraining1 from "./pages/mathe-training-1.mdx";
+import * as ImpMsFormsExample from "./pages/ms-forms-example.mdx";
+import * as ImpPotenzschreibweise from "./pages/potenzschreibweise.mdx";
 import * as ImpTerme from "./pages/terme.mdx";
 
 export type MDXPageModule = {
@@ -14,13 +15,15 @@ export type MDXPageModule = {
   title?: string;
   grade?: number;
   subject?: string;
+  format?: string;
 };
 
 export const pages: { name: string; imp: MDXPageModule }[] = [
   { name: "gleichungen", imp: ImpGleichungen },
   { name: "home", imp: ImpHome },
-  { name: "potenzschreibweise", imp: ImpPotenzschreibweise },
-  { name: "mathe-training-1", imp: ImpMatheTraining1 },
   { name: "mathe-schularbeit-1", imp: ImpMatheSchularbeit1 },
+  { name: "mathe-training-1", imp: ImpMatheTraining1 },
+  { name: "ms-forms-example", imp: ImpMsFormsExample },
+  { name: "potenzschreibweise", imp: ImpPotenzschreibweise },
   { name: "terme", imp: ImpTerme },
 ];

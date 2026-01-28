@@ -13,11 +13,6 @@ function getRouteFromPath(pathname: string, basePath = "/ralph/"): Route {
   return routes.find((r) => r.path === path) || (routes[0] as Route);
 }
 
-interface MDXComponentProps {
-  children?: ReactNode;
-  [key: string]: unknown;
-}
-
 interface AppProps {
   serverUrl?: string;
 }
@@ -68,6 +63,12 @@ function App({ serverUrl }: AppProps) {
   const mdxComponents = {
     Exercise: ({ children }: { children?: ReactNode }) => (
       <div className="exercise">{children}</div>
+    ),
+    MSFormsQuestion: ({ children }: { children?: ReactNode }) => (
+      <div className="ms-forms-question">
+        {children}
+        <p>ANSWER: A</p>
+      </div>
     ),
     Solution: ({ children }: { children?: ReactNode }) => (
       <span className="solution">{children}</span>
@@ -128,7 +129,9 @@ function App({ serverUrl }: AppProps) {
           </button>
         </div>
       </nav>
-      <div className="max-w-4xl mx-auto px-8">
+      <div
+        className={`max-w-4xl mx-auto px-8 format-${currentRoute.format || "base"}`}
+      >
         <MDXProvider components={mdxComponents}>
           <div className="content">
             <div className="page-header text-3xl mt-6 mb-4">

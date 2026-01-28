@@ -124,13 +124,25 @@ mjx-container:has(+ .solution) svg {
   justify-content: center;
 }
 
+.ms-forms-question {
+  break-inside: avoid;
+  ol {
+    list-style-type: upper-alpha;
+  }
+}
+
 @media print {
+  .format-ms-forms .page-header {
+    display: none;
+  }
+
   @page {
     counter-increment: page;
     size: A4;
     margin-bottom: 20mm;
     margin-left: 5mm;
 
+    /*
     @bottom-right {
       padding-right: 20px;
       font-size: 12px !important;
@@ -141,5 +153,6 @@ mjx-container:has(+ .solution) svg {
     @bottom-left {
       margin-left: 23mm;
     }
+      */
   }
 }
