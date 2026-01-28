@@ -110,8 +110,21 @@ function App({ serverUrl }: AppProps) {
             ))}
           </select>
           <div className="grow"></div>
-          <button onClick={toggleSolutions} className="solution-toggle btn">
-            Lösungen ein-/ausblenden
+          <details className="dropdown dropdown-end">
+            <summary className="btn">?</summary>
+            <ul className="menu dropdown-content bg-base-200 rounded-box m-1 z-1 w-100 p-2 shadow-sm">
+              <li>
+                Ließ die Seite `{currentRoute.name}.mdx` sorgfältig durch.
+              </li>
+              <li>Verbessere in Seite `{currentRoute.name}.mdx` ...</li>
+              <li>Erweitere die Seite `{currentRoute.name}.mdx` um ...</li>
+            </ul>
+          </details>
+          <button
+            onClick={toggleSolutions}
+            className="btn solution-toggle ml-3"
+          >
+            Lösungen
           </button>
         </div>
       </nav>
