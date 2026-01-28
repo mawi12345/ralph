@@ -12,7 +12,7 @@ Minimal MDX React project for GitHub Pages with SSR/Static Site Generation.
 - React 19 with Vite 7
 - MDX for content pages
 - MathJax for math rendering (via remark-math and rehype-mathjax)
-- SSR with static HTML generation for each route
+- SSR with code generation for route discovery and static HTML generation for each route
 
 ## MathJax
 
@@ -71,7 +71,7 @@ $$ (x + 5)^2 - 5x + x^2 = $$ <Solution>...</Solution><br />A: <Solution>...</Sol
 ## Commands
 
 - `bun run dev` - Start development server
-- `bun run tsc` - Type checking 
+- `bun run test` - Runs codegen and type checking 
 - `bun run build` - Build for production (generates static HTML for all routes)
 - `bun run preview` - Preview production build
 
@@ -81,18 +81,24 @@ $$ (x + 5)^2 - 5x + x^2 = $$ <Solution>...</Solution><br />A: <Solution>...</Sol
 - `src/App.tsx` - Main app component with routing
 - `src/entry-client.tsx` - Client-side hydration entry point
 - `src/entry-server.tsx` - Server-side rendering entry point
+- `codegen.ts` - Route discovery 
 - `prerender.ts` - Static HTML generation script
 - `public/` - Static assets
 
-## Adding New Routes
+## Adding new pages
 
-To add a new route, update the `routes` array in `src/App.tsx`:
+Use a unique slug as filename in the page directory.
+Start the mdx file with `export const title =` and a human readable title, `export const grade = ` number grade level (fallback to 7) and `export const subject =` the class subject.
 
-```tsx
-export const routes = [
-  { path: "/", name: "home", component: HomePage, title: "Home" },
-  // Add new routes here
-];
+Example:
 ```
+export const title = "Gleichungen";
+export const grade = 7;
+export const subject = "Mathematik";
+``` 
 
-Always add a new route when you add a page.
+## Testing
+
+- make sure `bun install` runs without warnings
+- run `bun run test` to verify all type checks
+- run `bun run build` and ensure not warnings or errors happen during build

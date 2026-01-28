@@ -1,10 +1,5 @@
 import type { ComponentType } from "react";
-
-import * as GleichungenPage from "./pages/gleichungen.mdx";
-import * as HomePage from "./pages/home.mdx";
-import * as SchularbeitPage from "./pages/mathe-schularbeit-1.mdx";
-import * as PotenzschreibweisePage from "./pages/potenzschreibweise.mdx";
-import * as TermePage from "./pages/terme.mdx";
+import { pages } from "./pages";
 
 export interface Route {
   path: string;
@@ -14,36 +9,6 @@ export interface Route {
   grade?: number;
   subject?: string;
 }
-
-type MDXPageModule = {
-  default: ComponentType;
-  title?: string;
-  grade?: number;
-  subject?: string;
-};
-
-const pages: { name: string; imp: MDXPageModule }[] = [
-  {
-    name: "potenzschreibweise",
-    imp: PotenzschreibweisePage,
-  },
-  {
-    name: "home",
-    imp: HomePage,
-  },
-  {
-    name: "terme",
-    imp: TermePage,
-  },
-  {
-    name: "gleichungen",
-    imp: GleichungenPage,
-  },
-  {
-    name: "schularbeit",
-    imp: SchularbeitPage,
-  },
-];
 
 export const routes: Route[] = pages.map((page) => ({
   component: page.imp.default,
