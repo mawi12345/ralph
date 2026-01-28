@@ -79,6 +79,18 @@ function App({ serverUrl }: AppProps) {
     Note: ({ children }: { children?: ReactNode }) => (
       <span className="note">{children}</span>
     ),
+    Flashcard: ({
+      front,
+      children,
+    }: {
+      front: ReactNode;
+      children?: ReactNode;
+    }) => (
+      <div className="flashcard">
+        <div className="flashcard-front">{front}</div>
+        <div className="flashcard-back">{children}</div>
+      </div>
+    ),
     Footer: ({ text }: { text: string }) => (
       <style>{`
   @page {

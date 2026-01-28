@@ -131,6 +131,35 @@ mjx-container:has(+ .solution) svg {
   }
 }
 
+/* Flashcard / Lernkarten styles */
+.flashcard {
+  @apply border border-gray-300 rounded-lg mb-4 break-inside-avoid;
+  page-break-inside: avoid;
+}
+
+.flashcard-front {
+  @apply bg-blue-50 p-4 font-semibold border-b border-gray-300;
+}
+
+.flashcard-back {
+  @apply p-4 bg-white;
+}
+
+.App.hide-solutions .flashcard-back {
+  @apply invisible;
+}
+
+/* Print styles for flashcards */
+@media print {
+  .flashcard {
+    @apply border-2 border-gray-400;
+  }
+
+  .flashcard-front {
+    @apply bg-gray-100;
+  }
+}
+
 @media print {
   .format-ms-forms .page-header {
     display: none;
