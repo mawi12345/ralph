@@ -109,12 +109,41 @@ function App({ serverUrl }: AppProps) {
               ))}
             </select>
             <div className="grow"></div>
-            <button
-              onClick={toggleSolutions}
-              className="btn solution-toggle ml-3"
-            >
-              Lösungen
-            </button>
+            {currentRoute.format !== "lernkarten" && (
+              <button
+                onClick={toggleSolutions}
+                className="btn solution-toggle ml-3"
+              >
+                Lösungen
+              </button>
+            )}
+            {currentRoute.format === "lernkarten" && (
+              <button
+                onClick={() => {
+                  // hide headings
+                  document
+                    .querySelectorAll("h1, h2, h3, h4, h5, h6")
+                    .forEach((el) => {
+                      el.classList.add("hidden");
+                    });
+
+                  const sides = document.getElementsByClassName("a8");
+                  // Shuffle flashcards by randomly reordering their elements
+                  for (let r = 0; r < 3; r++) {
+                    for (let i = sides.length - 1; i > 0; i--) {
+                      const j = Math.floor(Math.random() * (i + 1));
+                      const parent = sides.item(i)!.parentNode;
+                      if (parent) {
+                        parent.insertBefore(sides.item(j)!, sides.item(i));
+                      }
+                    }
+                  }
+                }}
+                className="btn ml-3"
+              >
+                Mischen
+              </button>
+            )}
           </div>
         </nav>
         <div

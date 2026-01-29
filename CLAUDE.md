@@ -3,6 +3,8 @@
 A SSR/Static MDX project for teachers.
 Create learning content such as exercises, schoolwork, and other materials with ease.
 
+Most changes should only be made in the `pages` directory.
+
 ## Language
 
 This project is used in a Mittelschule (Österreich).
