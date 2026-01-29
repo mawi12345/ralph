@@ -12,17 +12,14 @@ function createHeading(level: number) {
           .trim()
           .replace(/[\d\.]+/g, "")
           .trim();
-        const span = ref.current.getElementsByTagName("span").item(0);
-        if (span) {
-          span.classList.add(`cursor-copy`);
-          span.addEventListener("click", () => {
-            navigator.clipboard.writeText(
-              `Seite ${route.name}.mdx Überschrift "${content}"`,
-            );
-          });
-        }
+        ref.current.classList.add(`cursor-copy`);
+        ref.current.addEventListener("click", () => {
+          navigator.clipboard.writeText(
+            `Seite ${route.name}.mdx Überschrift "${content}"`,
+          );
+        });
       }
-    }, []);
+    }, [route.name]);
 
     if (level === 1) {
       return <h1 ref={ref}>{children}</h1>;
