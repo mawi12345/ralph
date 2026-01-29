@@ -60,6 +60,10 @@
   ol {
     @apply ml-8 mb-4;
   }
+
+  ul {
+    list-style-type: disc;
+  }
 }
 
 mjx-container svg {
@@ -132,56 +136,62 @@ mjx-container:has(+ .solution) svg {
 }
 
 /* Flashcard / Lernkarten styles */
-.flashcard {
-  @apply border border-gray-300 rounded-lg mb-4 break-inside-avoid;
-  page-break-inside: avoid;
+
+.flashcard p,
+.flashcard ol,
+.flashcard ul {
+  margin-bottom: 0;
+}
+
+.flashcard-front,
+.flashcard-back,
+.flashcard-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flashcard-front {
-  @apply bg-blue-50 p-4 font-semibold border-b border-gray-300;
+  @apply bg-amber-200;
 }
 
 .flashcard-back {
-  @apply p-4 bg-white;
+  @apply bg-emerald-200;
 }
 
-.App.hide-solutions .flashcard-back {
-  @apply invisible;
+.flashcard-content {
+  width: 6cm;
+  height: 4cm;
 }
 
 /* Print styles for flashcards */
-@media print {
-  .flashcard {
-    @apply border-2 border-gray-400;
-  }
-
-  .flashcard-front {
-    @apply bg-gray-100;
-  }
-}
-
 @media print {
   .format-ms-forms .page-header {
     display: none;
   }
 
-  @page {
-    counter-increment: page;
-    size: A4;
-    margin-bottom: 20mm;
-    margin-left: 5mm;
+  .format-lernkarten {
+    padding: 0;
 
-    /*
-    @bottom-right {
-      padding-right: 20px;
-      font-size: 12px !important;
-      content: "Seite " counter(page) " von " counter(pages);
-      margin-right: 3mm;
+    h1,
+    h2,
+    h3,
+    .page-header {
+      display: none;
     }
 
-    @bottom-left {
-      margin-left: 23mm;
+    .content {
+      margin-left: 0;
     }
-      */
+
+    .flashcard-front {
+      page-break-inside: avoid;
+      page-break-after: always;
+    }
+
+    .flashcard-back {
+      page-break-inside: avoid;
+      page-break-after: always;
+    }
   }
 }

@@ -1,0 +1,6 @@
+@page {
+  counter-increment: page;
+  size: A4;
+  margin-bottom: 20mm;
+  margin-left: 5mm;
+}

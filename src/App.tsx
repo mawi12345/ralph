@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { routes, type Route } from "./routes";
+import a4 from "./a4.css?url";
+import a8 from "./a8.css?url";
+import { AutoSizedText } from "./components/AutoSizedText.tsx";
 
 // Helper to get route from pathname
 function getRouteFromPath(pathname: string, basePath = "/ralph/"): Route {
@@ -87,8 +90,16 @@ function App({ serverUrl }: AppProps) {
       children?: ReactNode;
     }) => (
       <div className="flashcard">
-        <div className="flashcard-front">{front}</div>
-        <div className="flashcard-back">{children}</div>
+        <div className="flashcard-front a8">
+          <div className="flashcard-content">
+            <AutoSizedText>{front}</AutoSizedText>
+          </div>
+        </div>
+        <div className="flashcard-back a8">
+          <div className="flashcard-content">
+            <AutoSizedText>{children}</AutoSizedText>
+          </div>
+        </div>
       </div>
     ),
     Footer: ({ text }: { text: string }) => (
@@ -127,7 +138,7 @@ function App({ serverUrl }: AppProps) {
             <summary className="btn">?</summary>
             <ul className="menu dropdown-content bg-base-200 rounded-box m-1 z-1 w-100 p-2 shadow-sm">
               <li>
-                Ließ die Seite `{currentRoute.name}.mdx` sorgfältig durch.
+                Lies die Seite `{currentRoute.name}.mdx` sorgfältig durch.
               </li>
               <li>Verbessere in Seite `{currentRoute.name}.mdx` ...</li>
               <li>Erweitere die Seite `{currentRoute.name}.mdx` um ...</li>
@@ -153,6 +164,10 @@ function App({ serverUrl }: AppProps) {
           </div>
         </MDXProvider>
       </div>
+      <link
+        rel="stylesheet"
+        href={currentRoute.format == "lernkarten" ? a8 : a4}
+      ></link>
     </div>
   );
 }
