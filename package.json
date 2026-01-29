@@ -5,8 +5,8 @@
   "description": "Minimal MDX React project for GitHub Pages",
   "scripts": {
     "dev": "bunx --bun vite",
-    "build": "bun run codegen && bun run build:client && bun run build:server && bun run generate",
-    "test": "bun run codegen && bun run tsc",
+    "build": "bun install && bun run codegen && bun run build:client && bun run build:server && bun run generate",
+    "test": "bun install && bun run codegen && bun run tsc",
     "build:client": "bunx --bun vite build --outDir dist",
     "build:server": "bunx --bun vite build --ssr src/entry-server.tsx --outDir dist/server",
     "generate": "bun prerender.ts",

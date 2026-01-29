@@ -1,9 +1,30 @@
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { routes, type Route } from "./routes";
+import { Exercise } from "./components/Exercise.tsx";
+import { MSFormsQuestion } from "./components/MSFormsQuestion.tsx";
+import { Solution } from "./components/Solution.tsx";
+import { Points } from "./components/Points.tsx";
+import { Note } from "./components/Note.tsx";
+import { Flashcard } from "./components/Flashcard.tsx";
+import { Footer } from "./components/Footer.tsx";
+import { headings } from "./components/Heading.tsx";
+
 import a4 from "./a4.css?url";
 import a8 from "./a8.css?url";
-import { AutoSizedText } from "./components/AutoSizedText.tsx";
+import { RouteContext } from "./RouteContext.ts";
+import { PageHeader } from "./components/PageHeader.tsx";
+
+const mdxComponents = {
+  ...headings,
+  Exercise,
+  MSFormsQuestion,
+  Solution,
+  Points,
+  Note,
+  Flashcard,
+  Footer,
+};
 
 // Helper to get route from pathname
 function getRouteFromPath(pathname: string, basePath = "/ralph/"): Route {
@@ -63,112 +84,55 @@ function App({ serverUrl }: AppProps) {
     }
   };
 
-  const mdxComponents = {
-    Exercise: ({ children }: { children?: ReactNode }) => (
-      <div className="exercise">{children}</div>
-    ),
-    MSFormsQuestion: ({ children }: { children?: ReactNode }) => (
-      <div className="ms-forms-question">
-        {children}
-        <p>ANSWER: A</p>
-      </div>
-    ),
-    Solution: ({ children }: { children?: ReactNode }) => (
-      <span className="solution">{children}</span>
-    ),
-    Points: ({ children }: { children?: ReactNode }) => (
-      <div className="points">{children}</div>
-    ),
-    Note: ({ children }: { children?: ReactNode }) => (
-      <span className="note">{children}</span>
-    ),
-    Flashcard: ({
-      front,
-      children,
-    }: {
-      front: ReactNode;
-      children?: ReactNode;
-    }) => (
-      <div className="flashcard">
-        <div className="flashcard-front a8">
-          <div className="flashcard-content">
-            <AutoSizedText>{front}</AutoSizedText>
-          </div>
-        </div>
-        <div className="flashcard-back a8">
-          <div className="flashcard-content">
-            <AutoSizedText>{children}</AutoSizedText>
-          </div>
-        </div>
-      </div>
-    ),
-    Footer: ({ text }: { text: string }) => (
-      <style>{`
-  @page {
-    @bottom-left {
-      content: "${text}";
-    }
-  }
-`}</style>
-    ),
-  };
-
   const PageComponent = currentRoute.component;
 
   return (
-    <div ref={appRef} className="App">
-      <nav className="navbar bg-base-100 shadow-sm print:hidden">
-        <div className="max-w-4xl mx-auto flex w-full">
-          <a className="btn btn-ghost text-xl" onClick={() => navigate("home")}>
-            Ralph
-          </a>
-          <select
-            className="select"
-            value={currentRoute.name}
-            onChange={(e) => navigate(e.target.value)}
-          >
-            {routes.map((route) => (
-              <option key={route.name} value={route.name}>
-                {route.title}
-              </option>
-            ))}
-          </select>
-          <div className="grow"></div>
-          <details className="dropdown dropdown-end">
-            <summary className="btn">?</summary>
-            <ul className="menu dropdown-content bg-base-200 rounded-box m-1 z-1 w-100 p-2 shadow-sm">
-              <li>
-                Lies die Seite `{currentRoute.name}.mdx` sorgfältig durch.
-              </li>
-              <li>Verbessere in Seite `{currentRoute.name}.mdx` ...</li>
-              <li>Erweitere die Seite `{currentRoute.name}.mdx` um ...</li>
-            </ul>
-          </details>
-          <button
-            onClick={toggleSolutions}
-            className="btn solution-toggle ml-3"
-          >
-            Lösungen
-          </button>
-        </div>
-      </nav>
-      <div
-        className={`max-w-4xl mx-auto px-8 format-${currentRoute.format || "base"}`}
-      >
-        <MDXProvider components={mdxComponents}>
-          <div className="content">
-            <div className="page-header text-3xl mt-6 mb-4">
-              {currentRoute.title}
-            </div>
-            <PageComponent />
+    <RouteContext value={currentRoute}>
+      <div ref={appRef} className="App">
+        <nav className="navbar bg-base-100 shadow-sm print:hidden">
+          <div className="max-w-4xl mx-auto flex w-full">
+            <a
+              className="btn btn-ghost text-xl"
+              onClick={() => navigate("home")}
+            >
+              Ralph
+            </a>
+            <select
+              className="select"
+              value={currentRoute.name}
+              onChange={(e) => navigate(e.target.value)}
+            >
+              {routes.map((route) => (
+                <option key={route.name} value={route.name}>
+                  {route.title}
+                </option>
+              ))}
+            </select>
+            <div className="grow"></div>
+            <button
+              onClick={toggleSolutions}
+              className="btn solution-toggle ml-3"
+            >
+              Lösungen
+            </button>
           </div>
-        </MDXProvider>
+        </nav>
+        <div
+          className={`max-w-4xl mx-auto px-8 format-${currentRoute.format || "base"}`}
+        >
+          <MDXProvider components={mdxComponents}>
+            <div className="content">
+              <PageHeader />
+              <PageComponent />
+            </div>
+          </MDXProvider>
+        </div>
+        <link
+          rel="stylesheet"
+          href={currentRoute.format == "lernkarten" ? a8 : a4}
+        ></link>
       </div>
-      <link
-        rel="stylesheet"
-        href={currentRoute.format == "lernkarten" ? a8 : a4}
-      ></link>
-    </div>
+    </RouteContext>
   );
 }
 
