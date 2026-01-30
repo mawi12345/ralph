@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { RouteContext } from "../RouteContext.ts";
 
 export function PageHeader() {
-  const route = useContext(RouteContext);
+  const { route } = useContext(RouteContext);
 
   return (
     <div

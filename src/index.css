@@ -8,6 +8,48 @@
   body {
     @apply text-gray-800 antialiased leading-relaxed;
   }
+}
+
+mjx-container svg {
+  @apply inline;
+  margin-top: 10px;
+}
+
+.solution {
+  @apply text-green-600 font-semibold;
+}
+
+mjx-container:has(+ .solution) svg {
+  margin-right: 10px;
+}
+
+.App.hide-solutions .solution {
+  @apply invisible;
+}
+
+.App:not(.hide-solutions) .solution-toggle {
+  @apply btn-success;
+}
+
+/* move section numbers to the left */
+.section-number {
+  width: 50px;
+  display: block;
+  position: absolute;
+  left: -50px;
+}
+/* add left margin to content to accommodate section numbers */
+.content {
+  margin-left: 50px;
+
+  ul,
+  ol {
+    @apply ml-8 mb-4;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
 
   h1,
   h2,
@@ -55,48 +97,6 @@
   a {
     @apply text-blue-600 no-underline hover:underline;
   }
-
-  ul,
-  ol {
-    @apply ml-8 mb-4;
-  }
-
-  ul {
-    list-style-type: disc;
-  }
-}
-
-mjx-container svg {
-  @apply inline;
-  margin-top: 10px;
-}
-
-.solution {
-  @apply text-green-600 font-semibold;
-}
-
-mjx-container:has(+ .solution) svg {
-  margin-right: 10px;
-}
-
-.App.hide-solutions .solution {
-  @apply invisible;
-}
-
-.App:not(.hide-solutions) .solution-toggle {
-  @apply btn-success;
-}
-
-/* move section numbers to the left */
-.section-number {
-  width: 50px;
-  display: block;
-  position: absolute;
-  left: -50px;
-}
-/* add left margin to content to accommodate section numbers */
-.content {
-  margin-left: 50px;
 }
 
 .note {

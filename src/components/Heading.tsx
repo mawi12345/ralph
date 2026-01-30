@@ -4,7 +4,7 @@ import { RouteContext } from "../RouteContext.ts";
 function createHeading(level: number) {
   return function Heading({ children }: { children: React.ReactNode }) {
     const ref = useRef<HTMLHeadingElement>(null);
-    const route = useContext(RouteContext);
+    const { route } = useContext(RouteContext);
 
     useLayoutEffect(() => {
       if (ref.current) {

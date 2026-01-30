@@ -14,6 +14,7 @@ import a4 from "./a4.css?url";
 import a8 from "./a8.css?url";
 import { RouteContext } from "./RouteContext.ts";
 import { PageHeader } from "./components/PageHeader.tsx";
+import { RouteTree } from "./components/RouteMenu.tsx";
 
 const mdxComponents = {
   ...headings,
@@ -87,7 +88,7 @@ function App({ serverUrl }: AppProps) {
   const PageComponent = currentRoute.component;
 
   return (
-    <RouteContext value={currentRoute}>
+    <RouteContext value={{ route: currentRoute, navigate }}>
       <div ref={appRef} className="App">
         <nav className="navbar bg-base-100 shadow-sm print:hidden">
           <div className="max-w-4xl mx-auto flex w-full">
@@ -97,17 +98,7 @@ function App({ serverUrl }: AppProps) {
             >
               Ralph
             </a>
-            <select
-              className="select"
-              value={currentRoute.name}
-              onChange={(e) => navigate(e.target.value)}
-            >
-              {routes.map((route) => (
-                <option key={route.name} value={route.name}>
-                  {route.title}
-                </option>
-              ))}
-            </select>
+            <RouteTree routes={routes} navigate={navigate} />
             <div className="grow"></div>
             {currentRoute.format !== "lernkarten" && (
               <button
