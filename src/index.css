@@ -166,7 +166,8 @@ mjx-container:has(+ .solution) svg {
 
 /* Print styles for flashcards */
 @media print {
-  .format-ms-forms .page-header {
+  .format-ms-forms .page-header,
+  .format-schularbeit .page-header {
     display: none;
   }
 

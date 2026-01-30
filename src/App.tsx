@@ -15,6 +15,7 @@ import a8 from "./a8.css?url";
 import { RouteContext } from "./RouteContext.ts";
 import { PageHeader } from "./components/PageHeader.tsx";
 import { RouteTree } from "./components/RouteMenu.tsx";
+import { TestCoverPage } from "./components/TestCoverPage.tsx";
 
 const mdxComponents = {
   ...headings,
@@ -25,6 +26,7 @@ const mdxComponents = {
   Note,
   Flashcard,
   Footer,
+  TestCoverPage,
 };
 
 // Helper to get route from pathname

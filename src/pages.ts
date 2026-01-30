@@ -7,7 +7,7 @@ import * as ImpHome from "./pages/home.mdx";
 import * as ImpLupenWirkungLernkarten from "./pages/lupen-wirkung-lernkarten.mdx";
 import * as ImpLupenWirkungQuiz from "./pages/lupen-wirkung-quiz.mdx";
 import * as ImpLupenWirkung from "./pages/lupen-wirkung.mdx";
-import * as ImpMatheSchularbeit1 from "./pages/mathe-schularbeit-1.mdx";
+import * as ImpMatheSchularbeit2 from "./pages/mathe-schularbeit-2.mdx";
 import * as ImpMatheTraining1 from "./pages/mathe-training-1.mdx";
 import * as ImpMsFormsExample from "./pages/ms-forms-example.mdx";
 import * as ImpPotenzschreibweise from "./pages/potenzschreibweise.mdx";
@@ -27,7 +27,7 @@ export const pages: { name: string; imp: MDXPageModule }[] = [
   { name: "lupen-wirkung-lernkarten", imp: ImpLupenWirkungLernkarten },
   { name: "lupen-wirkung-quiz", imp: ImpLupenWirkungQuiz },
   { name: "lupen-wirkung", imp: ImpLupenWirkung },
-  { name: "mathe-schularbeit-1", imp: ImpMatheSchularbeit1 },
+  { name: "mathe-schularbeit-2", imp: ImpMatheSchularbeit2 },
   { name: "mathe-training-1", imp: ImpMatheTraining1 },
   { name: "ms-forms-example", imp: ImpMsFormsExample },
   { name: "potenzschreibweise", imp: ImpPotenzschreibweise },
