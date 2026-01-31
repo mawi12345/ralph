@@ -10,17 +10,34 @@ Eine **Lupe** (Sammellinse) ist eine durchsichtige, gewölbte Linse. Sie kann Li
 
 Eine Sammellinse ist in der Mitte **dicker** als am Rand. Sie bündelt parallele Lichtstrahlen in einem Punkt, dem **Brennpunkt (F)**.
 
-```
-        Lichtstrahlen
-            ↓ ↓ ↓
-        ╭───────────╮
-       ╱             ╲
-      │       ○       │  ← Sammellinse
-       ╲             ╱
-        ╰───────────╯
-              ↓
-              F  ← Brennpunkt
-```
+<svg viewBox="0 0 300 220" style={{maxWidth: '300px', display: 'block', margin: '1rem auto'}}>
+  {/* Lichtstrahlen (oben) */}
+  <line x1="100" y1="10" x2="100" y2="60" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#arrowDown)" />
+  <line x1="150" y1="10" x2="150" y2="60" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#arrowDown)" />
+  <line x1="200" y1="10" x2="200" y2="60" stroke="#f59e0b" strokeWidth="2" markerEnd="url(#arrowDown)" />
+  <text x="150" y="22" textAnchor="middle" fontSize="12" fill="#666">Lichtstrahlen</text>
+
+  {/* Sammellinse */}
+  <ellipse cx="150" cy="90" rx="60" ry="30" fill="#a5d8ff" stroke="#1971c2" strokeWidth="2" />
+  <text x="230" y="95" fontSize="12" fill="#666">← Sammellinse</text>
+
+  {/* Gebündelte Strahlen (unten) */}
+  <line x1="100" y1="120" x2="150" y2="180" stroke="#f59e0b" strokeWidth="2" />
+  <line x1="150" y1="120" x2="150" y2="180" stroke="#f59e0b" strokeWidth="2" />
+  <line x1="200" y1="120" x2="150" y2="180" stroke="#f59e0b" strokeWidth="2" />
+
+  {/* Brennpunkt */}
+  <circle cx="150" cy="180" r="5" fill="#e03131" />
+  <text x="160" y="185" fontSize="14" fontWeight="bold" fill="#e03131">F</text>
+  <text x="175" y="185" fontSize="12" fill="#666">← Brennpunkt</text>
+
+  {/* Pfeilspitzen-Definition */}
+  <defs>
+    <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="5" refY="10" orient="auto">
+      <path d="M0,0 L5,10 L10,0" fill="#f59e0b" />
+    </marker>
+  </defs>
+</svg>
 
 Die **Brennweite (f)** ist der Abstand zwischen der Linsenmitte und dem Brennpunkt.
 
