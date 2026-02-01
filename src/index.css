@@ -117,6 +117,24 @@ mjx-container:has(+ .solution) svg {
     }
   }
 
+  /* Rotierte Tabellenüberschriften für platzsparende Darstellung */
+  .rotated-headers table {
+    th {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-align: center;
+      vertical-align: bottom;
+      height: 100px;
+      white-space: nowrap;
+      padding: 8px 4px;
+    }
+
+    td {
+      text-align: center;
+      padding: 4px 2px;
+    }
+  }
+
   hr {
     display: none;
   }
