@@ -87,10 +87,10 @@ mjx-container:has(+ .solution) svg {
   }
 
   pre {
-    @apply bg-gray-100 p-4 rounded overflow-x-auto mb-4;
+    @apply p-4 rounded overflow-x-auto mb-4;
   }
 
-  pre code {
+  code {
     @apply bg-transparent p-0;
   }
 
@@ -109,11 +109,11 @@ mjx-container:has(+ .solution) svg {
 
     th,
     td {
-      @apply border px-4 py-2 border-gray-400;
+      @apply border px-4 py-2 border-gray-300;
     }
 
     th {
-      @apply bg-gray-100;
+      @apply bg-gray-50 text-left;
     }
   }
 
