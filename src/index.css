@@ -97,23 +97,27 @@ mjx-container:has(+ .solution) svg {
   a {
     @apply text-blue-600 no-underline hover:underline;
   }
-}
 
-.note {
-  display: none;
-}
-
-.content table {
-  @apply mb-6 border border-collapse;
-  width: 100%;
-
-  th,
-  td {
-    @apply border px-4 py-2 border-gray-400;
+  .note {
+    display: none;
   }
 
-  th {
-    @apply bg-gray-100;
+  table {
+    @apply mb-6 border border-collapse;
+    width: 100%;
+
+    th,
+    td {
+      @apply border px-4 py-2 border-gray-400;
+    }
+
+    th {
+      @apply bg-gray-100;
+    }
+  }
+
+  hr {
+    display: none;
   }
 }
 
