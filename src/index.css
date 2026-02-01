@@ -103,6 +103,20 @@ mjx-container:has(+ .solution) svg {
   display: none;
 }
 
+.content table {
+  @apply mb-6 border border-collapse;
+  width: 100%;
+
+  th,
+  td {
+    @apply border px-4 py-2 border-gray-400;
+  }
+
+  th {
+    @apply bg-gray-100;
+  }
+}
+
 .exercise {
   position: relative;
   border: 1px solid;
