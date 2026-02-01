@@ -20,6 +20,14 @@ type RouteNode = {
 
 type TreeNode = FolderNode | RouteNode;
 
+function getSubject({ subject }: { subject?: string }): string {
+  return subject || "Allgemein";
+}
+
+function getGrade({ grade }: { grade?: number }): string {
+  return grade === undefined ? "Alle Schulstufen" : `${grade}. Schulstufe`;
+}
+
 function buildRouteTree(routes: Route[]): TreeNode[] {
   const roots: TreeNode[] = [];
 
@@ -36,14 +44,14 @@ function buildRouteTree(routes: Route[]): TreeNode[] {
   for (const subject of subjects) {
     const subjectNode: TreeNode = {
       kind: "folder",
-      name: subject || "Allgemein",
+      name: getSubject({ subject }),
       children: [],
     };
 
     for (const grade of grades) {
       const gradeNode: TreeNode = {
         kind: "folder",
-        name: grade === undefined ? "Alle Schulstufen" : `${grade}. Schulstufe`,
+        name: getGrade({ grade }),
         children: [],
       };
 
@@ -107,16 +115,35 @@ export function RouteTree({ routes, navigate }: Props) {
   const { route } = useContext(RouteContext);
   const tree = buildRouteTree(routes);
   return (
-    <details className="dropdown dropdown-start">
-      <summary className="btn">{route.title}</summary>
-      <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-120 p-2 shadow-sm">
+    <>
+      <button
+        className="breadcrumbs text-sm btn"
+        popoverTarget="main-page-menu"
+        style={{ anchorName: "--main-page-menu-btn" }}
+      >
+        <ul>
+          <li>{getSubject(route)}</li>
+          <li>{getGrade(route)}</li>
+          <li>{route.title}</li>
+        </ul>
+      </button>
+      <ul
+        className="dropdown menu w-120 rounded-box bg-base-100 shadow-md"
+        popover="auto"
+        id="main-page-menu"
+        style={
+          {
+            positionAnchor: "--main-page-menu-btn",
+          } /* as React.CSSProperties */
+        }
+      >
         {tree.map((child, index) => (
           <li key={index}>
             <TreeNodeItem node={child} />
           </li>
         ))}
       </ul>
-    </details>
+    </>
   );
 }
 
