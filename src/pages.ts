@@ -5,6 +5,8 @@ import type { ComponentType } from "react";
 import * as ImpChemieAtomeLernkarten from "./pages/chemie-atome-lernkarten.mdx";
 import * as ImpChemieAtomeQuiz from "./pages/chemie-atome-quiz.mdx";
 import * as ImpChemieAtome from "./pages/chemie-atome.mdx";
+import * as ImpChemieElementeQuiz1 from "./pages/chemie-elemente-quiz-1.mdx";
+import * as ImpChemieElementeQuiz2 from "./pages/chemie-elemente-quiz-2.mdx";
 import * as ImpChemieElementeTabellen from "./pages/chemie-elemente-tabellen.mdx";
 import * as ImpChemiePeriodensystemLernkarten from "./pages/chemie-periodensystem-lernkarten.mdx";
 import * as ImpChemiePeriodensystemQuiz from "./pages/chemie-periodensystem-quiz.mdx";
@@ -36,6 +38,8 @@ export const pages: { name: string; imp: MDXPageModule }[] = [
   { name: "chemie-atome-lernkarten", imp: ImpChemieAtomeLernkarten },
   { name: "chemie-atome-quiz", imp: ImpChemieAtomeQuiz },
   { name: "chemie-atome", imp: ImpChemieAtome },
+  { name: "chemie-elemente-quiz-1", imp: ImpChemieElementeQuiz1 },
+  { name: "chemie-elemente-quiz-2", imp: ImpChemieElementeQuiz2 },
   { name: "chemie-elemente-tabellen", imp: ImpChemieElementeTabellen },
   { name: "chemie-periodensystem-lernkarten", imp: ImpChemiePeriodensystemLernkarten },
   { name: "chemie-periodensystem-quiz", imp: ImpChemiePeriodensystemQuiz },
