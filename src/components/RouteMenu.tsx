@@ -28,6 +28,10 @@ function getGrade({ grade }: { grade?: number }): string {
   return grade === undefined ? "Alle Schulstufen" : `${grade}. Schulstufe`;
 }
 
+function getTopic({ topic }: { topic?: string }): string {
+  return topic || "Unsortiert";
+}
+
 function buildRouteTree(routes: Route[]): TreeNode[] {
   const roots: TreeNode[] = [];
 
@@ -40,6 +44,11 @@ function buildRouteTree(routes: Route[]): TreeNode[] {
     ...new Set<number | undefined>(routes.map((r) => r.grade)).values(),
   ];
   grades.sort();
+
+  const topics = [
+    ...new Set<string | undefined>(routes.map((r) => r.topic)).values(),
+  ];
+  topics.sort();
 
   for (const subject of subjects) {
     const subjectNode: TreeNode = {
@@ -55,15 +64,27 @@ function buildRouteTree(routes: Route[]): TreeNode[] {
         children: [],
       };
 
-      const filteredRoutes = routes.filter(
-        (r) => r.subject === subject && r.grade === grade,
-      );
+      for (const topic of topics) {
+        const topicNode: TreeNode = {
+          kind: "folder",
+          name: getTopic({ topic }),
+          children: [],
+        };
 
-      for (const route of filteredRoutes) {
-        gradeNode.children.push({
-          kind: "route",
-          route,
-        });
+        const filteredRoutes = routes.filter(
+          (r) =>
+            r.subject === subject && r.grade === grade && r.topic === topic,
+        );
+
+        for (const route of filteredRoutes) {
+          topicNode.children.push({
+            kind: "route",
+            route,
+          });
+        }
+        if (topicNode.children.length > 0) {
+          gradeNode.children.push(topicNode);
+        }
       }
       if (gradeNode.children.length > 0) {
         subjectNode.children.push(gradeNode);
@@ -124,6 +145,7 @@ export function RouteTree({ routes, navigate }: Props) {
         <ul>
           <li>{getSubject(route)}</li>
           <li>{getGrade(route)}</li>
+          <li>{getTopic(route)}</li>
           <li>{route.title}</li>
         </ul>
       </button>
