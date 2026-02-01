@@ -28,6 +28,7 @@ export type MDXPageModule = {
   grade?: number;
   subject?: string;
   format?: string;
+  topic?: string;
 };
 
 export const pages: { name: string; imp: MDXPageModule }[] = [
