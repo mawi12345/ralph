@@ -47,6 +47,7 @@ export type MDXPageModule = {
   grade?: number;
   subject?: string;
   format?: string;
+  topic?: string;
 };
 `);
 
