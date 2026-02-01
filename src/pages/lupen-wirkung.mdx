@@ -11,17 +11,28 @@ Eine **Lupe** (Sammellinse) ist eine durchsichtige, gewölbte Linse. Sie kann Li
 
 Eine Sammellinse ist in der Mitte **dicker** als am Rand. Sie bündelt parallele Lichtstrahlen in einem Punkt, dem **Brennpunkt (F)**.
 
-```
-        Lichtstrahlen
-            ↓ ↓ ↓
-        ╭───────────╮
-       ╱             ╲
-      │       ○       │  ← Sammellinse
-       ╲             ╱
-        ╰───────────╯
-              ↓
-              F  ← Brennpunkt
-```
+<svg viewBox="0 0 200 280" width="200" height="280" style={{display: 'block', margin: '1em auto'}}>
+  {/* Lichtstrahlen */}
+  <line x1="70" y1="10" x2="70" y2="70" stroke="#FFD700" strokeWidth="2" markerEnd="url(#arrowYellow)"/>
+  <line x1="100" y1="10" x2="100" y2="70" stroke="#FFD700" strokeWidth="2" markerEnd="url(#arrowYellow)"/>
+  <line x1="130" y1="10" x2="130" y2="70" stroke="#FFD700" strokeWidth="2" markerEnd="url(#arrowYellow)"/>
+  <text x="100" y="25" textAnchor="middle" fontSize="12" fill="#333">Lichtstrahlen</text>
+  {/* Bikonvexe Linse */}
+  <path d="M85,70 Q60,140 85,210 Q100,215 115,210 Q140,140 115,70 Q100,65 85,70" fill="#009FFF" stroke="#000" strokeWidth="2"/>
+  <text x="165" y="140" fontSize="11" fill="#333">Sammellinse</text>
+  {/* Gebrochene Strahlen zum Brennpunkt */}
+  <line x1="70" y1="70" x2="100" y2="250" stroke="#FFD700" strokeWidth="2"/>
+  <line x1="100" y1="70" x2="100" y2="250" stroke="#FFD700" strokeWidth="2"/>
+  <line x1="130" y1="70" x2="100" y2="250" stroke="#FFD700" strokeWidth="2"/>
+  {/* Brennpunkt */}
+  <circle cx="100" cy="250" r="4" fill="#E53935"/>
+  <text x="115" y="255" fontSize="12" fill="#333">F (Brennpunkt)</text>
+  <defs>
+    <marker id="arrowYellow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#FFD700"/>
+    </marker>
+  </defs>
+</svg>
 
 Die **Brennweite (f)** ist der Abstand zwischen der Linsenmitte und dem Brennpunkt.
 
@@ -31,7 +42,7 @@ Die **Brennweite (f)** ist der Abstand zwischen der Linsenmitte und dem Brennpun
 
 Je nachdem, wie weit ein Gegenstand von der Linse entfernt ist, entstehen unterschiedliche Bilder:
 
-## 1. Virtuelles Bild (Lupeneffekt)
+## Virtuelles Bild (Lupeneffekt)
 
 Ist der Gegenstand **näher als die Brennweite** an der Linse, sieht man ein:
 - **aufrechtes** Bild
@@ -40,16 +51,34 @@ Ist der Gegenstand **näher als die Brennweite** an der Linse, sieht man ein:
 
 Das Bild scheint hinter dem Gegenstand zu schweben - man kann es nicht auf einem Schirm auffangen. Deshalb heißt es **virtuell** (scheinbar).
 
-```
-    Auge                    Linse      Gegenstand
-      👁    ←  ←  ←  ←  ←    │|│         ↑
-         (vergrößert)        │|│         │
-                             │|│       Pfeil
-```
+<svg viewBox="0 0 400 160" width="400" height="160" style={{display: 'block', margin: '1em auto'}}>
+  {/* Auge */}
+  <ellipse cx="40" cy="80" rx="20" ry="12" fill="#FFF" stroke="#000" strokeWidth="2"/>
+  <circle cx="45" cy="80" r="6" fill="#4A90D9"/>
+  <circle cx="47" cy="78" r="2" fill="#000"/>
+  <text x="40" y="115" textAnchor="middle" fontSize="11" fill="#333">Auge</text>
+  {/* Strahlen vom virtuellen Bild zum Auge */}
+  <line x1="60" y1="75" x2="180" y2="60" stroke="#FFD700" strokeWidth="2" strokeDasharray="5,3"/>
+  <line x1="60" y1="85" x2="180" y2="100" stroke="#FFD700" strokeWidth="2" strokeDasharray="5,3"/>
+  {/* Bikonvexe Linse */}
+  <path d="M195,40 Q175,80 195,120 Q205,125 215,120 Q235,80 215,40 Q205,35 195,40" fill="#009FFF" stroke="#000" strokeWidth="2"/>
+  <text x="205" y="145" textAnchor="middle" fontSize="11" fill="#333">Linse</text>
+  {/* Strahlen vom Gegenstand zur Linse */}
+  <line x1="215" y1="60" x2="320" y2="50" stroke="#FFD700" strokeWidth="2"/>
+  <line x1="215" y1="100" x2="320" y2="110" stroke="#FFD700" strokeWidth="2"/>
+  {/* Gegenstand (kleiner Pfeil) */}
+  <line x1="330" y1="110" x2="330" y2="50" stroke="#E53935" strokeWidth="3"/>
+  <polygon points="330,50 324,62 336,62" fill="#E53935"/>
+  <text x="330" y="130" textAnchor="middle" fontSize="11" fill="#333">Gegenstand</text>
+  {/* Virtuelles Bild (größer, gestrichelt) */}
+  <line x1="120" y1="120" x2="120" y2="40" stroke="#E53935" strokeWidth="3" strokeDasharray="5,3"/>
+  <polygon points="120,40 114,52 126,52" fill="#E53935" opacity="0.6"/>
+  <text x="120" y="140" textAnchor="middle" fontSize="10" fill="#666">(vergrößertes Bild)</text>
+</svg>
 
 **Beispiel:** Wassertropfen auf einer Buchseite vergrößert die Buchstaben.
 
-## 2. Reelles Bild
+## Reelles Bild
 
 Ist der Gegenstand **weiter als die Brennweite** von der Linse entfernt, entsteht ein:
 - **umgekehrtes** (auf dem Kopf stehendes) Bild
@@ -58,13 +87,29 @@ Ist der Gegenstand **weiter als die Brennweite** von der Linse entfernt, entsteh
 
 Dieses Bild kann man auf einem Schirm auffangen. Es heißt **reell** (wirklich).
 
-```
-    Schirm         Linse            Gegenstand
-
-      ↓             │|│                 ↑
-    (Bild           │|│                 │
-  umgekehrt)        │|│               Pfeil
-```
+<svg viewBox="0 0 400 160" width="400" height="160" style={{display: 'block', margin: '1em auto'}}>
+  {/* Schirm */}
+  <rect x="20" y="30" width="8" height="100" fill="#CCC" stroke="#666" strokeWidth="1"/>
+  <text x="24" y="145" textAnchor="middle" fontSize="11" fill="#333">Schirm</text>
+  {/* Reelles Bild auf Schirm (umgekehrt) */}
+  <line x1="32" y1="50" x2="32" y2="110" stroke="#E53935" strokeWidth="3"/>
+  <polygon points="32,110 26,98 38,98" fill="#E53935"/>
+  <text x="55" y="85" fontSize="10" fill="#666">(Bild</text>
+  <text x="55" y="97" fontSize="10" fill="#666">umgekehrt)</text>
+  {/* Strahlen vom Gegenstand durch Linse zum Schirm */}
+  <line x1="32" y1="50" x2="180" y2="95" stroke="#FFD700" strokeWidth="2"/>
+  <line x1="32" y1="110" x2="180" y2="65" stroke="#FFD700" strokeWidth="2"/>
+  {/* Bikonvexe Linse */}
+  <path d="M195,40 Q175,80 195,120 Q205,125 215,120 Q235,80 215,40 Q205,35 195,40" fill="#009FFF" stroke="#000" strokeWidth="2"/>
+  <text x="205" y="145" textAnchor="middle" fontSize="11" fill="#333">Linse</text>
+  {/* Strahlen vom Gegenstand zur Linse */}
+  <line x1="220" y1="65" x2="330" y2="50" stroke="#FFD700" strokeWidth="2"/>
+  <line x1="220" y1="95" x2="330" y2="110" stroke="#FFD700" strokeWidth="2"/>
+  {/* Gegenstand (Pfeil aufrecht) */}
+  <line x1="340" y1="110" x2="340" y2="50" stroke="#E53935" strokeWidth="3"/>
+  <polygon points="340,50 334,62 346,62" fill="#E53935"/>
+  <text x="340" y="130" textAnchor="middle" fontSize="11" fill="#333">Gegenstand</text>
+</svg>
 
 **Beispiel:** Wasserglas vor einem Pfeil - bei genug Abstand erscheint der Pfeil auf dem Kopf stehend.
 
