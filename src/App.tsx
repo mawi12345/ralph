@@ -63,6 +63,13 @@ function App({ serverUrl }: AppProps) {
     appRef.current?.classList.toggle("hide-solutions");
   };
 
+  // Update document title when route changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.title = currentRoute.title;
+    }
+  }, [currentRoute]);
+
   // Handle browser back/forward navigation
   useEffect(() => {
     if (typeof window === "undefined") return;

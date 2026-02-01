@@ -20,7 +20,7 @@ for (const route of routes) {
   const url = route.path;
   const { html: appHtml } = render(url);
 
-  const title = `${route.title} - Ralph`;
+  const title = `${route.title}`;
   const html = template
     .replace("<!--app-html-->", appHtml)
     .replace("<!--app-title-->", title);
