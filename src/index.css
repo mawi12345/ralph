@@ -105,6 +105,7 @@ mjx-container:has(+ .solution) svg {
   table {
     @apply mb-6 border border-collapse;
     width: 100%;
+    page-break-inside: avoid;
 
     th,
     td {
