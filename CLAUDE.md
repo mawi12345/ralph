@@ -27,6 +27,17 @@ All communication and content on the pages should be in German.
 - Format big numbers with thousands separators (groups of 3) with a space `\,`. Example $$ 12\,300\,000\,000\,000 \cdot 60 \cdot 60 = 44\,280\,000\,000\,000\,000 $$
 - Use `\underline{\hspace{12mm}}` for fill in the blank questions
 
+## GeoGebra
+
+Interaktive GeoGebra-Applets können mit der `<Geogebra>` Komponente eingebunden werden.
+
+```mdx
+<Geogebra id="abc123" />
+```
+
+- `id` (required): Die Material-ID von geogebra.org (z.B. aus der URL `https://www.geogebra.org/m/abc123`)
+- `className` (optional): Zusätzliche CSS-Klassen
+
 ## MS Forms format (Quiz)
 
 - Look at `ms-forms-example.mdx` and follow the same format
