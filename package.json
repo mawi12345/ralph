@@ -21,11 +21,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mathjax/src": "^4.0.0",
     "@mdx-js/react": "^3.1.1",
     "daisyui": "^5.5.14",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "rehype-mathjax": "^7.1.0",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
     "unist-util-visit": "^5.0.0"
