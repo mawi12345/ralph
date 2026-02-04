@@ -5,6 +5,17 @@
     "": {
       "name": "ralph",
       "dependencies": {
+        "@mathjax/mathjax-asana-font": "^4.1.0",
+        "@mathjax/mathjax-bonum-font": "^4.1.0",
+        "@mathjax/mathjax-dejavu-font": "^4.1.0",
+        "@mathjax/mathjax-fira-font": "^4.1.0",
+        "@mathjax/mathjax-modern-font": "^4.1.0",
+        "@mathjax/mathjax-newcm-font": "^4.1.0",
+        "@mathjax/mathjax-pagella-font": "^4.1.0",
+        "@mathjax/mathjax-schola-font": "^4.1.0",
+        "@mathjax/mathjax-stix2-font": "^4.1.0",
+        "@mathjax/mathjax-termes-font": "^4.1.0",
+        "@mathjax/mathjax-tex-font": "^4.1.0",
         "@mathjax/src": "^4.0.0",
         "@mdx-js/react": "^3.1.1",
         "daisyui": "^5.5.14",
@@ -136,7 +147,27 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
+    "@mathjax/mathjax-asana-font": ["@mathjax/mathjax-asana-font@4.1.0", "", {}, "sha512-ZTR8pj206xfLxSq5kYyXeaM3j2R2gdF3e55LIB3LsiExs5c08SQ8kjI1xqq1A3BbPMrF318aoQrZeGR/4cIsXg=="],
+
+    "@mathjax/mathjax-bonum-font": ["@mathjax/mathjax-bonum-font@4.1.0", "", {}, "sha512-JD8fUnhzl1MivIxkLJAQfS2bAFEUK6x5UL4e1yNr1Oc/ra7XhcBOmwK5H5k8SgORLluHvTceWdLhkc7TUrqwuQ=="],
+
+    "@mathjax/mathjax-dejavu-font": ["@mathjax/mathjax-dejavu-font@4.1.0", "", {}, "sha512-POoG1Q8dQrPb/kwMNLlFI2O8e0vkG/DouxhyHlukgi2bwYw1Hu5SSK1LCnIW0BCvHqUHuRjG4V8GS0FqPyRBpw=="],
+
+    "@mathjax/mathjax-fira-font": ["@mathjax/mathjax-fira-font@4.1.0", "", {}, "sha512-O2tGYdjxDK8t3AruUOaDlEPreoLI/ZnMYZIFdnRUfm/Gydz1UZc0fZAh/UqBE35wWDJ80Ju6as0NBW01jsS+/g=="],
+
+    "@mathjax/mathjax-modern-font": ["@mathjax/mathjax-modern-font@4.1.0", "", {}, "sha512-Y7PBmXK2Q3Lw5YgpQ7Xs6A77SWTXKyuV5HWyXc8rarm/OqcEfhzjs9k7Dl9ClVLempvwV77a9Wn6rTLbNfzs+A=="],
+
     "@mathjax/mathjax-newcm-font": ["@mathjax/mathjax-newcm-font@4.1.0", "", {}, "sha512-n10AwYubUa2hyOzxSRzkwRrgCVns083zkentryXICMPKaWT/watfvK2sUk5D9Bow9mpDfoqb5EWApuUvqnlzaw=="],
+
+    "@mathjax/mathjax-pagella-font": ["@mathjax/mathjax-pagella-font@4.1.0", "", {}, "sha512-Fnoxj4QgsR3JTklDeMSzf3EbKsxE9jtxxPwUTcm3p3pnxQud4qszVj/0kk6+oZZsWeYfgvq35yVRnmHQ9Yrl+Q=="],
+
+    "@mathjax/mathjax-schola-font": ["@mathjax/mathjax-schola-font@4.1.0", "", {}, "sha512-O/2wufIWME4vKggUX+H8pXluOtWhZCFnHd3wqjn5mTy4tcph0gAfHiunb3PQkSMKJlcT8w7rammMmXV1Vo8KqA=="],
+
+    "@mathjax/mathjax-stix2-font": ["@mathjax/mathjax-stix2-font@4.1.0", "", {}, "sha512-uNRwwdyAJhdPwh7tFWrN0td+hT2lix8qDRELxNQWiH9ki1Z8Jb6NfTUzbMHyTiqZdNh2P+h1+QjPSnVlI6fsUw=="],
+
+    "@mathjax/mathjax-termes-font": ["@mathjax/mathjax-termes-font@4.1.0", "", {}, "sha512-jIs9T8llwnN3LaG41zTPgXBsGniQ/zl7YF3IViVlatedROSWOnV5XzFvp2C9OeGz107gux8kg365U0OFtPe4vw=="],
+
+    "@mathjax/mathjax-tex-font": ["@mathjax/mathjax-tex-font@4.1.0", "", {}, "sha512-PnlkYIcY4fPjmbN0AGLTULD8nSC2isrCmquEyuHzGU9dAOvLvapYWi5/2yOu0+ZRDDxgs0cAtg52fYQMkirxrQ=="],
 
     "@mathjax/src": ["@mathjax/src@4.1.0", "", { "dependencies": { "@mathjax/mathjax-newcm-font": "4.1.0", "mhchemparser": "^4.2.1", "mj-context-menu": "^1.0.0", "speech-rule-engine": "5.0.0-beta.3" } }, "sha512-xnBL2E5uNHR82iLiUVJXYicKh/Jbq2I1+8yCpcBfJqLEM6CrAR9zBpYYkAFtC/Myvykd5U5uMmRrtr49AKk0TA=="],
 

@@ -20,6 +20,51 @@ import "@mathjax/src/js/input/tex/newcommand/NewcommandConfiguration.js";
 import "@mathjax/src/js/input/tex/noundefined/NoUndefinedConfiguration.js";
 import "@mathjax/src/js/input/tex/boldsymbol/BoldsymbolConfiguration.js";
 
+// MathJax v4 font imports
+import { MathJaxNewcmFont } from "@mathjax/mathjax-newcm-font/mjs/svg.js";
+import { MathJaxAsanaFont } from "@mathjax/mathjax-asana-font/mjs/svg.js";
+import { MathJaxBonumFont } from "@mathjax/mathjax-bonum-font/mjs/svg.js";
+import { MathJaxDejavuFont } from "@mathjax/mathjax-dejavu-font/mjs/svg.js";
+import { MathJaxFiraFont } from "@mathjax/mathjax-fira-font/mjs/svg.js";
+import { MathJaxModernFont } from "@mathjax/mathjax-modern-font/mjs/svg.js";
+import { MathJaxPagellaFont } from "@mathjax/mathjax-pagella-font/mjs/svg.js";
+import { MathJaxScholaFont } from "@mathjax/mathjax-schola-font/mjs/svg.js";
+import { MathJaxStix2Font } from "@mathjax/mathjax-stix2-font/mjs/svg.js";
+import { MathJaxTermesFont } from "@mathjax/mathjax-termes-font/mjs/svg.js";
+import { MathJaxTexFont } from "@mathjax/mathjax-tex-font/mjs/svg.js";
+
+/**
+ * Available MathJax v4 fonts
+ * @see https://docs.mathjax.org/en/v4.0/output/fonts.html
+ */
+export type MathJaxFont =
+  | "mathjax-newcm" // New Computer Modern (default)
+  | "mathjax-asana" // Asana-Math
+  | "mathjax-bonum" // Gyre Bonum
+  | "mathjax-dejavu" // Gyre DejaVu
+  | "mathjax-fira" // Fira and Fira-Math
+  | "mathjax-modern" // Latin-Modern
+  | "mathjax-pagella" // Gyre Pagella
+  | "mathjax-schola" // Gyre Schola
+  | "mathjax-stix2" // STIX2
+  | "mathjax-termes" // Gyre Termes
+  | "mathjax-tex"; // Original MathJax TeX font
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const fontMap: Record<MathJaxFont, any> = {
+  "mathjax-newcm": MathJaxNewcmFont,
+  "mathjax-asana": MathJaxAsanaFont,
+  "mathjax-bonum": MathJaxBonumFont,
+  "mathjax-dejavu": MathJaxDejavuFont,
+  "mathjax-fira": MathJaxFiraFont,
+  "mathjax-modern": MathJaxModernFont,
+  "mathjax-pagella": MathJaxPagellaFont,
+  "mathjax-schola": MathJaxScholaFont,
+  "mathjax-stix2": MathJaxStix2Font,
+  "mathjax-termes": MathJaxTermesFont,
+  "mathjax-tex": MathJaxTexFont,
+};
+
 interface LiteElement {
   kind: string;
   attributes: Record<string, string>;
@@ -76,6 +121,12 @@ function toText(node: Element): string {
 }
 
 export interface RehypeMathjaxOptions {
+  /**
+   * The MathJax font to use for rendering
+   * @default "mathjax-newcm"
+   * @see https://docs.mathjax.org/en/v4.0/output/fonts.html
+   */
+  font?: MathJaxFont;
   tex?: {
     packages?: string[];
     [key: string]: unknown;
@@ -100,8 +151,13 @@ export default function rehypeMathjax(options: RehypeMathjaxOptions = {}) {
     ...options.tex,
   });
 
+  // Get the font class (default: mathjax-newcm)
+  const fontName = options.font ?? "mathjax-newcm";
+  const FontClass = fontMap[fontName];
+
   const svg = new SVG({
     fontCache: "none",
+    fontData: FontClass,
   });
 
   const adaptor = liteAdaptor();
