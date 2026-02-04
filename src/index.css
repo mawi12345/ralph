@@ -10,7 +10,7 @@
   }
 }
 
-mjx-container svg {
+mjx-container {
   @apply inline;
   margin-top: 10px;
 }
@@ -19,7 +19,7 @@ mjx-container svg {
   @apply text-green-600 font-semibold;
 }
 
-mjx-container:has(+ .solution) svg {
+mjx-container:has(+ .solution) {
   margin-right: 10px;
 }
 

@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import mdx from "@mdx-js/rollup";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
-import rehypeMathjax from "rehype-mathjax";
+import rehypeMathjaxChtml from "rehype-mathjax/chtml";
 import rehypeNumberHeadings from "./plugins/rehype-number-headings";
 
 export default defineConfig({
@@ -14,7 +14,18 @@ export default defineConfig({
       enforce: "pre",
       ...mdx({
         remarkPlugins: [remarkGfm, remarkMath],
-        rehypePlugins: [rehypeNumberHeadings, rehypeMathjax],
+        rehypePlugins: [
+          rehypeNumberHeadings,
+          [
+            rehypeMathjaxChtml,
+            {
+              chtml: {
+                fontURL:
+                  "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2",
+              },
+            },
+          ],
+        ],
         providerImportSource: "@mdx-js/react",
       }),
     },
