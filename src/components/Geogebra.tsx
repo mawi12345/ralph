@@ -11,7 +11,7 @@ export function Geogebra({
   useEffect(() => {
     const app = new (window as any).GGBApplet(
       {
-        appName: "classic",
+        appName: "geometry",
         scaleContainerClass: "ggb-container",
         // width: 800,
         // height: 400,
