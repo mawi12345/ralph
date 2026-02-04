@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import mdx from "@mdx-js/rollup";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
-import rehypeMathjax from "rehype-mathjax";
+import rehypeMathjax from "./plugins/rehype-mathjax-v4";
 import rehypeNumberHeadings from "./plugins/rehype-number-headings";
 
 export default defineConfig({
