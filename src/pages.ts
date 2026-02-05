@@ -12,16 +12,16 @@ import * as ImpChemiePeriodensystem from "./pages/chemie-periodensystem.mdx";
 import * as ImpChemieVerbindungenLernkarten from "./pages/chemie-verbindungen-lernkarten.mdx";
 import * as ImpChemieVerbindungenQuiz from "./pages/chemie-verbindungen-quiz.mdx";
 import * as ImpChemieVerbindungen from "./pages/chemie-verbindungen.mdx";
-import * as ImpGleichungen from "./pages/gleichungen.mdx";
 import * as ImpHome from "./pages/home.mdx";
-import * as ImpLupenWirkungLernkarten from "./pages/lupen-wirkung-lernkarten.mdx";
-import * as ImpLupenWirkungQuiz from "./pages/lupen-wirkung-quiz.mdx";
-import * as ImpLupenWirkung from "./pages/lupen-wirkung.mdx";
+import * as ImpMatheGleichungen from "./pages/mathe-gleichungen.mdx";
+import * as ImpMathePotenzschreibweise from "./pages/mathe-potenzschreibweise.mdx";
+import * as ImpMatheSchularbeit2Training from "./pages/mathe-schularbeit-2-training.mdx";
 import * as ImpMatheSchularbeit2 from "./pages/mathe-schularbeit-2.mdx";
-import * as ImpMatheTraining1 from "./pages/mathe-training-1.mdx";
+import * as ImpMatheTerme from "./pages/mathe-terme.mdx";
 import * as ImpMsFormsExample from "./pages/ms-forms-example.mdx";
-import * as ImpPotenzschreibweise from "./pages/potenzschreibweise.mdx";
-import * as ImpTerme from "./pages/terme.mdx";
+import * as ImpPhysikLupenWirkungLernkarten from "./pages/physik-lupen-wirkung-lernkarten.mdx";
+import * as ImpPhysikLupenWirkungQuiz from "./pages/physik-lupen-wirkung-quiz.mdx";
+import * as ImpPhysikLupenWirkung from "./pages/physik-lupen-wirkung.mdx";
 
 export type MDXPageModule = {
   default: ComponentType;
@@ -43,14 +43,14 @@ export const pages: { name: string; imp: MDXPageModule }[] = [
   { name: "chemie-verbindungen-lernkarten", imp: ImpChemieVerbindungenLernkarten },
   { name: "chemie-verbindungen-quiz", imp: ImpChemieVerbindungenQuiz },
   { name: "chemie-verbindungen", imp: ImpChemieVerbindungen },
-  { name: "gleichungen", imp: ImpGleichungen },
   { name: "home", imp: ImpHome },
-  { name: "lupen-wirkung-lernkarten", imp: ImpLupenWirkungLernkarten },
-  { name: "lupen-wirkung-quiz", imp: ImpLupenWirkungQuiz },
-  { name: "lupen-wirkung", imp: ImpLupenWirkung },
+  { name: "mathe-gleichungen", imp: ImpMatheGleichungen },
+  { name: "mathe-potenzschreibweise", imp: ImpMathePotenzschreibweise },
+  { name: "mathe-schularbeit-2-training", imp: ImpMatheSchularbeit2Training },
   { name: "mathe-schularbeit-2", imp: ImpMatheSchularbeit2 },
-  { name: "mathe-training-1", imp: ImpMatheTraining1 },
+  { name: "mathe-terme", imp: ImpMatheTerme },
   { name: "ms-forms-example", imp: ImpMsFormsExample },
-  { name: "potenzschreibweise", imp: ImpPotenzschreibweise },
-  { name: "terme", imp: ImpTerme },
+  { name: "physik-lupen-wirkung-lernkarten", imp: ImpPhysikLupenWirkungLernkarten },
+  { name: "physik-lupen-wirkung-quiz", imp: ImpPhysikLupenWirkungQuiz },
+  { name: "physik-lupen-wirkung", imp: ImpPhysikLupenWirkung },
 ];
