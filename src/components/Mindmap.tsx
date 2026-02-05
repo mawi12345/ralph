@@ -1,56 +1,49 @@
 import type { ReactNode } from "react";
 
-interface MindmapNodeProps {
+interface MindmapBranchProps {
   label: ReactNode;
   children?: ReactNode;
   color?: "blue" | "green" | "orange" | "purple" | "red" | "teal";
-  defaultOpen?: boolean;
 }
 
-export function MindmapNode({
+export function MindmapBranch({
   label,
   children,
   color = "blue",
-  defaultOpen = false,
-}: MindmapNodeProps) {
-  const colorClasses = {
-    blue: "mindmap-node-blue",
-    green: "mindmap-node-green",
-    orange: "mindmap-node-orange",
-    purple: "mindmap-node-purple",
-    red: "mindmap-node-red",
-    teal: "mindmap-node-teal",
-  };
-
-  if (!children) {
-    return (
-      <div className={`mindmap-leaf ${colorClasses[color]}`}>
-        <span className="mindmap-leaf-label">{label}</span>
-      </div>
-    );
-  }
-
+}: MindmapBranchProps) {
   return (
-    <details className={`mindmap-node ${colorClasses[color]}`} open={defaultOpen}>
-      <summary className="mindmap-summary">{label}</summary>
-      <div className="mindmap-children">{children}</div>
-    </details>
+    <div className={`mindmap-branch mindmap-color-${color}`}>
+      <div className="mindmap-branch-label">{label}</div>
+      {children && <div className="mindmap-branch-children">{children}</div>}
+    </div>
+  );
+}
+
+interface MindmapNodeProps {
+  label: ReactNode;
+  color?: "blue" | "green" | "orange" | "purple" | "red" | "teal";
+}
+
+export function MindmapNode({ label, color = "blue" }: MindmapNodeProps) {
+  return (
+    <div className={`mindmap-item mindmap-color-${color}`}>
+      <span className="mindmap-item-label">{label}</span>
+    </div>
   );
 }
 
 interface MindmapProps {
   title: ReactNode;
   children?: ReactNode;
-  defaultOpen?: boolean;
 }
 
-export function Mindmap({ title, children, defaultOpen = true }: MindmapProps) {
+export function Mindmap({ title, children }: MindmapProps) {
   return (
-    <div className="mindmap-container">
-      <details className="mindmap-root" open={defaultOpen}>
-        <summary className="mindmap-root-title">{title}</summary>
-        <div className="mindmap-content">{children}</div>
-      </details>
+    <div className="mindmap-wrapper">
+      <div className="mindmap-center">
+        <div className="mindmap-center-node">{title}</div>
+      </div>
+      <div className="mindmap-branches">{children}</div>
     </div>
   );
 }
