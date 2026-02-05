@@ -4,18 +4,31 @@ interface MindmapBranchProps {
   label: ReactNode;
   children?: ReactNode;
   color?: "blue" | "green" | "orange" | "purple" | "red" | "teal";
+  defaultOpen?: boolean;
 }
 
 export function MindmapBranch({
   label,
   children,
   color = "blue",
+  defaultOpen = false,
 }: MindmapBranchProps) {
+  if (!children) {
+    return (
+      <div className={`mindmap-branch mindmap-color-${color}`}>
+        <div className="mindmap-branch-label">{label}</div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`mindmap-branch mindmap-color-${color}`}>
-      <div className="mindmap-branch-label">{label}</div>
-      {children && <div className="mindmap-branch-children">{children}</div>}
-    </div>
+    <details
+      className={`mindmap-branch mindmap-color-${color}`}
+      open={defaultOpen}
+    >
+      <summary className="mindmap-branch-label">{label}</summary>
+      <div className="mindmap-branch-children">{children}</div>
+    </details>
   );
 }
 

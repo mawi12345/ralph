@@ -282,8 +282,27 @@ mjx-container:has(+ .solution) svg {
 
 .mindmap-branch-label {
   @apply px-4 py-3 font-semibold rounded-lg shadow-md text-center mt-4;
-  @apply border-2 transition-transform hover:scale-105;
+  @apply border-2 transition-transform hover:scale-105 cursor-pointer;
   min-width: 140px;
+  list-style: none;
+}
+
+.mindmap-branch-label::-webkit-details-marker {
+  display: none;
+}
+
+summary.mindmap-branch-label {
+  position: relative;
+}
+
+summary.mindmap-branch-label::after {
+  content: "▼";
+  @apply text-xs ml-2 opacity-60 transition-transform duration-200;
+  display: inline-block;
+}
+
+details.mindmap-branch:not([open]) > summary.mindmap-branch-label::after {
+  transform: rotate(-90deg);
 }
 
 .mindmap-branch-children {
