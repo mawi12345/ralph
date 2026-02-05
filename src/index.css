@@ -225,160 +225,20 @@ mjx-container:has(+ .solution) svg {
   }
 }
 
-/* Mindmap Styles */
-.mindmap-wrapper {
-  @apply my-8 py-6 overflow-x-auto;
+/* D3 Mindmap Styles */
+.mindmap-d3-container {
+  @apply my-8 flex justify-center overflow-x-auto;
 }
 
-.mindmap-center {
-  @apply flex justify-center mb-4;
+.mindmap-d3-container svg {
+  @apply rounded-lg bg-gradient-to-br from-slate-50 to-gray-100;
+  @apply shadow-lg border border-gray-200;
 }
 
-.mindmap-center-node {
-  @apply px-6 py-4 text-xl font-bold text-white rounded-full shadow-lg;
-  @apply bg-gradient-to-br from-indigo-500 to-purple-600;
-  position: relative;
+.mindmap-d3-container .node {
+  transition: transform 0.2s ease;
 }
 
-.mindmap-center-node::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -16px;
-  width: 2px;
-  height: 16px;
-  @apply bg-gray-400;
-}
-
-.mindmap-branches {
-  @apply flex flex-wrap justify-center gap-4;
-  position: relative;
-}
-
-.mindmap-branches::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  @apply bg-gray-300;
-}
-
-.mindmap-branch {
-  @apply flex flex-col items-center min-w-48;
-  position: relative;
-}
-
-.mindmap-branch::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 2px;
-  height: 16px;
-  @apply bg-gray-400;
-}
-
-.mindmap-branch-label {
-  @apply px-4 py-3 font-semibold rounded-lg shadow-md text-center mt-4;
-  @apply border-2 transition-transform hover:scale-105 cursor-pointer;
-  min-width: 140px;
-  list-style: none;
-}
-
-.mindmap-branch-label::-webkit-details-marker {
-  display: none;
-}
-
-summary.mindmap-branch-label {
-  position: relative;
-}
-
-summary.mindmap-branch-label::after {
-  content: "▼";
-  @apply text-xs ml-2 opacity-60 transition-transform duration-200;
-  display: inline-block;
-}
-
-details.mindmap-branch:not([open]) > summary.mindmap-branch-label::after {
-  transform: rotate(-90deg);
-}
-
-.mindmap-branch-children {
-  @apply mt-2 flex flex-col gap-1;
-  position: relative;
-  padding-left: 20px;
-}
-
-.mindmap-branch-children::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 0;
-  bottom: 8px;
-  width: 2px;
-  @apply bg-gray-300;
-}
-
-.mindmap-item {
-  @apply py-2 px-3 rounded-md text-sm;
-  position: relative;
-}
-
-.mindmap-item::before {
-  content: "";
-  position: absolute;
-  left: -10px;
-  top: 50%;
-  width: 10px;
-  height: 2px;
-  @apply bg-gray-300;
-}
-
-.mindmap-item-label {
-  @apply block;
-}
-
-/* Mindmap color variants */
-.mindmap-color-blue .mindmap-branch-label {
-  @apply bg-blue-100 text-blue-800 border-blue-400;
-}
-.mindmap-color-blue.mindmap-item {
-  @apply bg-blue-50 text-blue-700;
-}
-
-.mindmap-color-green .mindmap-branch-label {
-  @apply bg-emerald-100 text-emerald-800 border-emerald-400;
-}
-.mindmap-color-green.mindmap-item {
-  @apply bg-emerald-50 text-emerald-700;
-}
-
-.mindmap-color-orange .mindmap-branch-label {
-  @apply bg-orange-100 text-orange-800 border-orange-400;
-}
-.mindmap-color-orange.mindmap-item {
-  @apply bg-orange-50 text-orange-700;
-}
-
-.mindmap-color-purple .mindmap-branch-label {
-  @apply bg-purple-100 text-purple-800 border-purple-400;
-}
-.mindmap-color-purple.mindmap-item {
-  @apply bg-purple-50 text-purple-700;
-}
-
-.mindmap-color-red .mindmap-branch-label {
-  @apply bg-red-100 text-red-800 border-red-400;
-}
-.mindmap-color-red.mindmap-item {
-  @apply bg-red-50 text-red-700;
-}
-
-.mindmap-color-teal .mindmap-branch-label {
-  @apply bg-teal-100 text-teal-800 border-teal-400;
-}
-.mindmap-color-teal.mindmap-item {
-  @apply bg-teal-50 text-teal-700;
+.mindmap-d3-container .node:hover rect {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
 }
