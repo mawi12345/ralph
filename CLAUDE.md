@@ -23,9 +23,40 @@ All communication and content on the pages should be in German.
 
 ## MathJax
 
+This project uses a custom `rehype-mathjax-v4` plugin (`plugins/rehype-mathjax-v4.ts`) for server-side math rendering with MathJax 4.
+
+### Formatting Guidelines
+
 - Use `\cdot` for multiplications and `\dfrac` for fractions
 - Format big numbers with thousands separators (groups of 3) with a space `\,`. Example $$ 12\,300\,000\,000\,000 \cdot 60 \cdot 60 = 44\,280\,000\,000\,000\,000 $$
 - Use `\underline{\hspace{12mm}}` for fill in the blank questions
+- Use `\textcolor{color}{text}` for colored text, e.g. `\textcolor{red}{wichtig}`
+
+### Available Fonts
+
+The plugin supports all 11 MathJax v4 fonts. Configure in `vite.config.ts`:
+
+```typescript
+rehypeMathjax({ font: "mathjax-dejavu" })
+```
+
+| Font Name | Description |
+|-----------|-------------|
+| `mathjax-newcm` | New Computer Modern (MathJax 4 default) |
+| `mathjax-asana` | Asana-Math |
+| `mathjax-bonum` | Gyre Bonum |
+| `mathjax-dejavu` | Gyre DejaVu (current default for this project) |
+| `mathjax-fira` | Fira and Fira-Math |
+| `mathjax-modern` | Latin-Modern |
+| `mathjax-pagella` | Gyre Pagella |
+| `mathjax-schola` | Gyre Schola |
+| `mathjax-stix2` | STIX2 |
+| `mathjax-termes` | Gyre Termes |
+| `mathjax-tex` | Original MathJax TeX font |
+
+### Included TeX Packages
+
+The plugin includes these TeX packages by default: `base`, `ams`, `newcommand`, `noundefined`, `boldsymbol`, `color`
 
 ## GeoGebra
 

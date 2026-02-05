@@ -14,7 +14,10 @@ export default defineConfig({
       enforce: "pre",
       ...mdx({
         remarkPlugins: [remarkGfm, remarkMath],
-        rehypePlugins: [rehypeNumberHeadings, rehypeMathjax],
+        rehypePlugins: [
+          rehypeNumberHeadings,
+          [rehypeMathjax, { font: "mathjax-dejavu" }], // or mathjax-fira or mathjax-bonum
+        ],
         providerImportSource: "@mdx-js/react",
       }),
     },
