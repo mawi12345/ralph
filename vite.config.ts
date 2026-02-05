@@ -16,7 +16,7 @@ export default defineConfig({
         remarkPlugins: [remarkGfm, remarkMath],
         rehypePlugins: [
           rehypeNumberHeadings,
-          [rehypeMathjax, { font: "mathjax-dejavu" }], // or mathjax-fira or mathjax-bonum
+          [rehypeMathjax, { font: "mathjax-fira" }], // or mathjax-fira or mathjax-bonum
         ],
         providerImportSource: "@mdx-js/react",
       }),
