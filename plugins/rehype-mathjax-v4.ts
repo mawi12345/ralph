@@ -19,6 +19,7 @@ import "@mathjax/src/js/input/tex/ams/AmsConfiguration.js";
 import "@mathjax/src/js/input/tex/newcommand/NewcommandConfiguration.js";
 import "@mathjax/src/js/input/tex/noundefined/NoUndefinedConfiguration.js";
 import "@mathjax/src/js/input/tex/boldsymbol/BoldsymbolConfiguration.js";
+import "@mathjax/src/js/input/tex/color/ColorConfiguration.js";
 
 // MathJax v4 font imports
 import { MathJaxNewcmFont } from "@mathjax/mathjax-newcm-font/mjs/svg.js";
@@ -144,6 +145,7 @@ export default function rehypeMathjax(options: RehypeMathjaxOptions = {}) {
     "newcommand",
     "noundefined",
     "boldsymbol",
+    "color",
   ];
 
   const tex = new TeX({
