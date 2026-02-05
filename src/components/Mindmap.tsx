@@ -17,7 +17,7 @@ type NodeWithToggle = d3.HierarchyPointNode<MindmapData> & {
   _children?: d3.HierarchyPointNode<MindmapData>[];
 };
 
-export function Mindmap({ data, width = 700, height = 500 }: MindmapProps) {
+export function Mindmap({ data, width = 800, height = 500 }: MindmapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function Mindmap({ data, width = 700, height = 500 }: MindmapProps) {
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
 
-    const margin = { top: 20, right: 120, bottom: 20, left: 120 };
+    const margin = { top: 20, right: 180, bottom: 20, left: 100 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -62,15 +62,25 @@ export function Mindmap({ data, width = 700, height = 500 }: MindmapProps) {
       return colorMap[color] || defaultColor;
     }
 
+    // Calculate node width based on text length
+    function getNodeWidth(d: d3.HierarchyPointNode<MindmapData>) {
+      const text = d.data.name;
+      const fontSize = d.depth === 0 ? 14 : 12;
+      const charWidth = fontSize * 0.6; // approximate character width
+      const padding = 24;
+      const minWidth = d.depth === 0 ? 100 : 80;
+      return Math.max(minWidth, text.length * charWidth + padding);
+    }
+
     function update(source: d3.HierarchyPointNode<MindmapData>) {
       const duration = 400;
       const treeData = treeLayout(root);
       const nodes = treeData.descendants();
       const links = treeData.links();
 
-      // Normalize depth
+      // Normalize depth with more space for longer nodes
       nodes.forEach((d) => {
-        d.y = d.depth * 180;
+        d.y = d.depth * 220;
       });
 
       // Nodes
@@ -100,14 +110,14 @@ export function Mindmap({ data, width = 700, height = 500 }: MindmapProps) {
           update(d);
         });
 
-      // Node rectangles
+      // Node rectangles with dynamic width
       nodeEnter
         .append("rect")
-        .attr("rx", (d) => (d.depth === 0 ? 25 : 8))
-        .attr("ry", (d) => (d.depth === 0 ? 25 : 8))
-        .attr("x", (d) => -(d.depth === 0 ? 60 : 50))
+        .attr("rx", (d) => (d.depth === 0 ? 20 : 8))
+        .attr("ry", (d) => (d.depth === 0 ? 20 : 8))
+        .attr("x", (d) => -getNodeWidth(d) / 2)
         .attr("y", -18)
-        .attr("width", (d) => (d.depth === 0 ? 120 : 100))
+        .attr("width", (d) => getNodeWidth(d))
         .attr("height", 36)
         .attr("fill", (d) => getColor(d).bg)
         .attr("stroke", (d) => getColor(d).border)
@@ -132,7 +142,7 @@ export function Mindmap({ data, width = 700, height = 500 }: MindmapProps) {
         })
         .append("circle")
         .attr("class", "toggle-indicator")
-        .attr("cx", (d) => (d.depth === 0 ? 60 : 50) + 8)
+        .attr("cx", (d) => getNodeWidth(d) / 2 + 8)
         .attr("cy", 0)
         .attr("r", 8)
         .attr("fill", (d) => getColor(d).border)
@@ -146,7 +156,7 @@ export function Mindmap({ data, width = 700, height = 500 }: MindmapProps) {
         })
         .append("text")
         .attr("class", "toggle-text")
-        .attr("x", (d) => (d.depth === 0 ? 60 : 50) + 8)
+        .attr("x", (d) => getNodeWidth(d) / 2 + 8)
         .attr("y", 4)
         .attr("text-anchor", "middle")
         .attr("fill", "white")
