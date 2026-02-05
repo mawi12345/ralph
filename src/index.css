@@ -224,3 +224,139 @@ mjx-container:has(+ .solution) svg {
     }
   }
 }
+
+/* Mindmap Styles */
+.mindmap-container {
+  @apply my-6;
+}
+
+.mindmap-root {
+  @apply rounded-xl overflow-hidden shadow-lg border border-gray-200;
+}
+
+.mindmap-root-title {
+  @apply text-xl font-bold py-4 px-6 cursor-pointer select-none;
+  @apply bg-gradient-to-r from-indigo-500 to-purple-600 text-white;
+  @apply flex items-center gap-3;
+  list-style: none;
+}
+
+.mindmap-root-title::-webkit-details-marker {
+  display: none;
+}
+
+.mindmap-root-title::before {
+  content: "▶";
+  @apply text-sm transition-transform duration-200;
+  display: inline-block;
+}
+
+.mindmap-root[open] > .mindmap-root-title::before {
+  transform: rotate(90deg);
+}
+
+.mindmap-content {
+  @apply p-4 bg-gray-50 space-y-2;
+}
+
+.mindmap-node {
+  @apply rounded-lg overflow-hidden;
+}
+
+.mindmap-summary {
+  @apply py-3 px-4 cursor-pointer select-none font-semibold;
+  @apply flex items-center gap-2;
+  list-style: none;
+}
+
+.mindmap-summary::-webkit-details-marker {
+  display: none;
+}
+
+.mindmap-summary::before {
+  content: "▶";
+  @apply text-xs transition-transform duration-200;
+  display: inline-block;
+}
+
+.mindmap-node[open] > .mindmap-summary::before {
+  transform: rotate(90deg);
+}
+
+.mindmap-children {
+  @apply pl-6 py-2 space-y-2 border-l-2;
+}
+
+.mindmap-leaf {
+  @apply py-2 px-4 rounded-lg font-medium;
+}
+
+.mindmap-leaf-label {
+  @apply flex items-center gap-2;
+}
+
+.mindmap-leaf-label::before {
+  content: "•";
+  @apply text-lg;
+}
+
+/* Mindmap color variants */
+.mindmap-node-blue > .mindmap-summary {
+  @apply bg-blue-100 text-blue-800 hover:bg-blue-200;
+}
+.mindmap-node-blue > .mindmap-children {
+  @apply border-blue-300;
+}
+.mindmap-leaf.mindmap-node-blue {
+  @apply bg-blue-50 text-blue-700;
+}
+
+.mindmap-node-green > .mindmap-summary {
+  @apply bg-emerald-100 text-emerald-800 hover:bg-emerald-200;
+}
+.mindmap-node-green > .mindmap-children {
+  @apply border-emerald-300;
+}
+.mindmap-leaf.mindmap-node-green {
+  @apply bg-emerald-50 text-emerald-700;
+}
+
+.mindmap-node-orange > .mindmap-summary {
+  @apply bg-orange-100 text-orange-800 hover:bg-orange-200;
+}
+.mindmap-node-orange > .mindmap-children {
+  @apply border-orange-300;
+}
+.mindmap-leaf.mindmap-node-orange {
+  @apply bg-orange-50 text-orange-700;
+}
+
+.mindmap-node-purple > .mindmap-summary {
+  @apply bg-purple-100 text-purple-800 hover:bg-purple-200;
+}
+.mindmap-node-purple > .mindmap-children {
+  @apply border-purple-300;
+}
+.mindmap-leaf.mindmap-node-purple {
+  @apply bg-purple-50 text-purple-700;
+}
+
+.mindmap-node-red > .mindmap-summary {
+  @apply bg-red-100 text-red-800 hover:bg-red-200;
+}
+.mindmap-node-red > .mindmap-children {
+  @apply border-red-300;
+}
+.mindmap-leaf.mindmap-node-red {
+  @apply bg-red-50 text-red-700;
+}
+
+.mindmap-node-teal > .mindmap-summary {
+  @apply bg-teal-100 text-teal-800 hover:bg-teal-200;
+}
+.mindmap-node-teal > .mindmap-children {
+  @apply border-teal-300;
+}
+.mindmap-leaf.mindmap-node-teal {
+  @apply bg-teal-50 text-teal-700;
+}
