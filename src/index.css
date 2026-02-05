@@ -224,3 +224,21 @@ mjx-container:has(+ .solution) svg {
     }
   }
 }
+
+/* D3 Mindmap Styles */
+.mindmap-d3-container {
+  @apply my-8 flex justify-center overflow-x-auto;
+}
+
+.mindmap-d3-container svg {
+  @apply rounded-lg bg-gradient-to-br from-slate-50 to-gray-100;
+  @apply shadow-lg border border-gray-200;
+}
+
+.mindmap-d3-container .node {
+  transition: transform 0.2s ease;
+}
+
+.mindmap-d3-container .node:hover rect {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}

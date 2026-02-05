@@ -17,6 +17,7 @@ import { PageHeader } from "./components/PageHeader.tsx";
 import { RouteTree } from "./components/RouteMenu.tsx";
 import { TestCoverPage } from "./components/TestCoverPage.tsx";
 import { Geogebra } from "./components/Geogebra.tsx";
+import { Mindmap } from "./components/Mindmap.tsx";
 
 const mdxComponents = {
   ...headings,
@@ -29,6 +30,7 @@ const mdxComponents = {
   Footer,
   TestCoverPage,
   Geogebra,
+  Mindmap,
 };
 
 // Helper to get route from pathname
